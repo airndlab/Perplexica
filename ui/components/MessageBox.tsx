@@ -11,6 +11,8 @@ import {
   StopCircle,
   Layers3,
   Plus,
+  ThumbsDown,
+  ThumbsUp,
 } from 'lucide-react';
 import Markdown from 'markdown-to-jsx';
 import Copy from './MessageActions/Copy';
@@ -41,6 +43,7 @@ const MessageBox = ({
 }) => {
   const [parsedMessage, setParsedMessage] = useState(message.content);
   const [speechMessage, setSpeechMessage] = useState(message.content);
+  const [feedback, setFeedback] = useState('');
 
   useEffect(() => {
     const regex = /\[(\d+)\]/g;
@@ -138,6 +141,24 @@ const MessageBox = ({
                       ) : (
                         <Volume2 size={18} />
                       )}
+                    </button>
+                    <button
+                      className="p-2 text-white/70 rounded-xl hover:bg-[#1c1c1c] transition duration-200 hover:text-white"
+                      onClick={() => setFeedback((prevState) => prevState === 'like' ? '' : 'like')}
+                    >
+                      <ThumbsUp
+                        size={18}
+                        fill={feedback === 'like' ? 'currentColor' : undefined}
+                      />
+                    </button>
+                    <button
+                      className="p-2 text-white/70 rounded-xl hover:bg-[#1c1c1c] transition duration-200 hover:text-white"
+                      onClick={() => setFeedback((prevState) => prevState === 'dislike' ? '' : 'dislike')}
+                    >
+                      <ThumbsDown
+                        size={18}
+                        fill={feedback === 'dislike' ? 'currentColor' : undefined}
+                      />
                     </button>
                   </div>
                 </div>
