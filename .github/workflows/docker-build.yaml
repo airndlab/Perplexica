@@ -37,10 +37,10 @@ jobs:
         id: version
         run: echo "IMAGE_TAG=$(date +'%Y.%m.%d-%H-%M')" >> $GITHUB_ENV
 
-      - name: Build and push Docker image for ${{ github.event.inputs.project }}
+      - name: Build and push Docker image for ${{ github.event.inputs.service }}
         run: |
           docker buildx create --use
-          if [[ "${{ github.event.inputs.project }}" == "backend" ]]; then \
+          if [[ "${{ github.event.inputs.service }}" == "backend" ]]; then \
             DOCKERFILE=backend.dockerfile; \
             IMAGE_NAME=perplexica-backend; \
           else \
