@@ -19,7 +19,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://158.160.68.33:3001/api/discover`, {
+        const res = await fetch('/discover.json', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -95,11 +95,13 @@ const Page = () => {
                 />
                 <div className="px-6 py-4">
                   <div className="font-bold text-lg mb-2">
-                    {item.title.slice(0, 100)}...
+                    {item.title.slice(0, 100)}{item.title.length > 100 ? '...' : ''}
                   </div>
-                  <p className="text-black-70 dark:text-white/70 text-sm">
-                    {item.content.slice(0, 100)}...
-                  </p>
+                  {item.content && (
+                    <p className="text-black-70 dark:text-white/70 text-sm">
+                      {item.content.slice(0, 100)}...
+                    </p>
+                  )}
                 </div>
               </Link>
             ))}
