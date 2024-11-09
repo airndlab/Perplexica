@@ -13,6 +13,8 @@ import db from '../db';
 import { chats, messages as messagesSchema } from '../db/schema';
 import { eq, asc, gt } from 'drizzle-orm';
 import crypto from 'crypto';
+import { createSearchEmitter } from '../db/store'
+import { v4 as uuidv4 } from 'uuid'
 
 type Message = {
   messageId: string;
@@ -46,29 +48,26 @@ const handleEmitterEvents = (
   let recievedMessage = '';
   let sources = [];
 
-  emitter.on('data', (data) => {
-    const parsedData = JSON.parse(data);
-    if (parsedData.type === 'response') {
-      ws.send(
-        JSON.stringify({
-          type: 'message',
-          data: parsedData.data,
-          messageId: messageId,
-        }),
-      );
-      recievedMessage += parsedData.data;
-    } else if (parsedData.type === 'sources') {
-      ws.send(
-        JSON.stringify({
-          type: 'sources',
-          data: parsedData.data,
-          messageId: messageId,
-        }),
-      );
-      sources = parsedData.data;
-    }
-  });
-  emitter.on('end', () => {
+  emitter.on('end',  (data) => {
+    const parsedData = JSON.parse(data)
+    ws.send(
+      JSON.stringify({
+        type: 'message',
+        data: parsedData.message,
+        messageId: messageId,
+      }),
+    );
+    recievedMessage += parsedData.message;
+
+    ws.send(
+      JSON.stringify({
+        type: 'sources',
+        data: parsedData.sources,
+        messageId: messageId,
+      }),
+    );
+    sources = parsedData.sources;
+
     ws.send(JSON.stringify({ type: 'messageEnd', messageId: messageId }));
 
     db.insert(messagesSchema)
@@ -98,9 +97,7 @@ const handleEmitterEvents = (
 
 export const handleMessage = async (
   message: string,
-  ws: WebSocket,
-  llm: BaseChatModel,
-  embeddings: Embeddings,
+  ws: WebSocket
 ) => {
   try {
     const parsedWSMessage = JSON.parse(message) as WSMessage;
@@ -119,79 +116,54 @@ export const handleMessage = async (
         }),
       );
 
-    const history: BaseMessage[] = parsedWSMessage.history.map((msg) => {
-      if (msg[0] === 'human') {
-        return new HumanMessage({
-          content: msg[1],
-        });
-      } else {
-        return new AIMessage({
-          content: msg[1],
-        });
-      }
-    });
-
     if (parsedWSMessage.type === 'message') {
-      const handler = searchHandlers[parsedWSMessage.focusMode];
+      const requestId = uuidv4()
+      const emitter = createSearchEmitter(
+        requestId,
+        parsedMessage.content,
+        parsedWSMessage.history
+      );
 
-      if (handler) {
-        const emitter = handler(
-          parsedMessage.content,
-          history,
-          llm,
-          embeddings,
-          parsedWSMessage.optimizationMode,
-        );
+      handleEmitterEvents(emitter, ws, aiMessageId, parsedMessage.chatId);
 
-        handleEmitterEvents(emitter, ws, aiMessageId, parsedMessage.chatId);
+      const chat = await db.query.chats.findFirst({
+        where: eq(chats.id, parsedMessage.chatId),
+      });
 
-        const chat = await db.query.chats.findFirst({
-          where: eq(chats.id, parsedMessage.chatId),
-        });
+      if (!chat) {
+        await db
+          .insert(chats)
+          .values({
+            id: parsedMessage.chatId,
+            title: parsedMessage.content,
+            createdAt: new Date().toString(),
+            focusMode: parsedWSMessage.focusMode,
+          })
+          .execute();
+      }
 
-        if (!chat) {
-          await db
-            .insert(chats)
-            .values({
-              id: parsedMessage.chatId,
-              title: parsedMessage.content,
-              createdAt: new Date().toString(),
-              focusMode: parsedWSMessage.focusMode,
-            })
-            .execute();
-        }
+      const messageExists = await db.query.messages.findFirst({
+        where: eq(messagesSchema.messageId, humanMessageId),
+      });
 
-        const messageExists = await db.query.messages.findFirst({
-          where: eq(messagesSchema.messageId, humanMessageId),
-        });
-
-        if (!messageExists) {
-          await db
-            .insert(messagesSchema)
-            .values({
-              content: parsedMessage.content,
-              chatId: parsedMessage.chatId,
-              messageId: humanMessageId,
-              role: 'user',
-              metadata: JSON.stringify({
-                createdAt: new Date(),
-              }),
-            })
-            .execute();
-        } else {
-          await db
-            .delete(messagesSchema)
-            .where(gt(messagesSchema.id, messageExists.id))
-            .execute();
-        }
+      if (!messageExists) {
+        await db
+          .insert(messagesSchema)
+          .values({
+            content: parsedMessage.content,
+            chatId: parsedMessage.chatId,
+            messageId: humanMessageId,
+            role: 'user',
+            metadata: JSON.stringify({
+              createdAt: new Date(),
+            }),
+          })
+          .execute();
       } else {
-        ws.send(
-          JSON.stringify({
-            type: 'error',
-            data: 'Invalid focus mode',
-            key: 'INVALID_FOCUS_MODE',
-          }),
-        );
+        await db
+          .delete(messagesSchema)
+          .where(gt(messagesSchema.id, messageExists.id))
+          .execute();
       }
     }
   } catch (err) {

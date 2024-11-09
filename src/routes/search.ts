@@ -1,11 +1,9 @@
 import express from 'express'
 import logger from '../utils/logger'
-import eventEmitter from 'events'
+import { allRequests, createSearchEmitter } from '../db/store'
 import { v4 as uuidv4 } from 'uuid'
 
 const router = express.Router()
-
-const allRequests = {}
 
 interface ChatRequestBody {
   query: string;
@@ -15,24 +13,18 @@ interface ChatRequestBody {
 router.post('/', async(req, res) => {
   try {
     const body: ChatRequestBody = req.body
-    const requestId = uuidv4()
-
     if (!body.query) {
       return res.status(400).json({ message: 'Missing focus mode or query' })
     }
 
-    const emitter = new eventEmitter()
-    allRequests[requestId] = {
-      emitter: emitter,
-      status: 'pending',
-      request: { query: body.query, history: body.history || [] },
-      response: { message: '', sources: [] },
-    }
+    const requestId = uuidv4()
+    const emitter = createSearchEmitter(requestId, body.query, body.history)
 
-    emitter.on('end', () => {
+    emitter.on('end', (data) => {
+      const parsedData = JSON.parse(data)
       res.status(200).json({
-        message: allRequests[requestId].response.message,
-        sources: allRequests[requestId].response.sources
+        message: parsedData.message,
+        sources: parsedData.sources
       })
       delete allRequests[requestId]
     })
@@ -77,7 +69,10 @@ router.post('/complete', async(req, res) => {
     requestData.response.sources = sources
     requestData.status = 'completed'
 
-    requestData.emitter.emit('end')
+    requestData.emitter.emit(
+      'end',
+      JSON.stringify({ type: 'all', message, sources }),
+    );
 
     res.status(200).json({ message: 'Request processed successfully' })
   } catch (error) {
