@@ -33,7 +33,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Extract version from release tag
-        if: github.event_name == 'release'
         id: version
         run: echo "IMAGE_TAG=$(date +'%Y.%m.%d-%H-%M')" >> $GITHUB_ENV
 
