@@ -342,7 +342,6 @@ const ChatWindow = ({ id }: { id?: string }) => {
 
     let sources: Document[] | undefined = undefined;
     let recievedMessage = '';
-    let added = false;
 
     messageId = messageId ?? crypto.randomBytes(7).toString('hex');
 
@@ -382,30 +381,17 @@ const ChatWindow = ({ id }: { id?: string }) => {
 
       if (data.type === 'all') {
         sources = data.sources;
-        if (!added) {
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            {
-              content: data.message,
-              messageId: data.messageId,
-              chatId: chatId!,
-              role: 'assistant',
-              sources: sources,
-              createdAt: new Date(),
-            },
-          ]);
-          added = true;
-        }
-
-        setMessages((prev) =>
-          prev.map((message) => {
-            if (message.messageId === data.messageId) {
-              return { ...message, content: message.content + data.message };
-            }
-
-            return message;
-          }),
-        );
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            content: data.message,
+            messageId: data.messageId,
+            chatId: chatId!,
+            role: 'assistant',
+            sources: sources,
+            createdAt: new Date(),
+          },
+        ]);
 
         recievedMessage += data.message;
         setMessageAppeared(true);
