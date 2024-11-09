@@ -47,7 +47,7 @@ jobs:
             IMAGE_NAME=perplexica-frontend; \
           fi
           docker buildx build --platform linux/amd64,linux/arm64 \
-            --cache-from=type=registry,ref=airndlab/${IMAGE_NAME}:${{ env.IMAGE_TAG }} \
+            --cache-from=type=registry,ref=itzcrazykns1337/${IMAGE_NAME}:main \
             --cache-to=type=inline \
             -f $DOCKERFILE \
             -t airndlab/${IMAGE_NAME}:${{ env.IMAGE_TAG }} \
