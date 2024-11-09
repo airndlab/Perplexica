@@ -56,7 +56,7 @@ router.get('/poll', (req, res) => {
 })
 
 router.post('/complete', async(req, res) => {
-  const { requestId, message, sources } = req.body
+  const { requestId, message, sources, suggestions } = req.body
 
   const requestData = allRequests[requestId]
 
@@ -65,13 +65,11 @@ router.post('/complete', async(req, res) => {
   }
 
   try {
-    requestData.response.message = message
-    requestData.response.sources = sources
     requestData.status = 'completed'
 
     requestData.emitter.emit(
       'end',
-      JSON.stringify({ type: 'all', message, sources }),
+      JSON.stringify({ type: 'all', message, sources, suggestions }),
     );
 
     res.status(200).json({ message: 'Request processed successfully' })

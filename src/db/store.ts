@@ -7,8 +7,7 @@ export const createSearchEmitter = (requestId, query, history) => {
   allRequests[requestId] = {
     emitter: emitter,
     status: 'pending',
-    request: { query: query, history: history || [] },
-    response: { message: '', sources: [] },
+    request: { query: query, history: history || [] }
   }
   return emitter
 }

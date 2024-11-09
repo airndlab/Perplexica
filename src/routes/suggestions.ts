@@ -1,10 +1,7 @@
 import express from 'express';
-import generateSuggestions from '../agents/suggestionGeneratorAgent';
-import { BaseChatModel } from '@langchain/core/language_models/chat_models';
-import { getAvailableChatModelProviders } from '../lib/providers';
-import { HumanMessage, AIMessage } from '@langchain/core/messages';
 import logger from '../utils/logger';
-import { ChatOpenAI } from '@langchain/openai';
+import { allRequests, createSearchEmitter } from '../db/store'
+import { v4 as uuidv4 } from 'uuid'
 
 const router = express.Router();
 
@@ -25,59 +22,21 @@ router.post('/', async (req, res) => {
     let body: SuggestionsBody = req.body;
 
     const chatHistory = body.chatHistory.map((msg: any) => {
-      if (msg.role === 'user') {
-        return new HumanMessage(msg.content);
-      } else if (msg.role === 'assistant') {
-        return new AIMessage(msg.content);
-      }
-    });
+      return [msg.role, msg.content]
+    })
 
-    const chatModelProviders = await getAvailableChatModelProviders();
-
-    const chatModelProvider =
-      body.chatModel?.provider || Object.keys(chatModelProviders)[0];
-    const chatModel =
-      body.chatModel?.model ||
-      Object.keys(chatModelProviders[chatModelProvider])[0];
-
-    let llm: BaseChatModel | undefined;
-
-    if (body.chatModel?.provider === 'custom_openai') {
-      if (
-        !body.chatModel?.customOpenAIBaseURL ||
-        !body.chatModel?.customOpenAIKey
-      ) {
-        return res
-          .status(400)
-          .json({ message: 'Missing custom OpenAI base URL or key' });
-      }
-
-      llm = new ChatOpenAI({
-        modelName: body.chatModel.model,
-        openAIApiKey: body.chatModel.customOpenAIKey,
-        temperature: 0.7,
-        configuration: {
-          baseURL: body.chatModel.customOpenAIBaseURL,
-        },
-      }) as unknown as BaseChatModel;
-    } else if (
-      chatModelProviders[chatModelProvider] &&
-      chatModelProviders[chatModelProvider][chatModel]
-    ) {
-      llm = chatModelProviders[chatModelProvider][chatModel]
-        .model as unknown as BaseChatModel | undefined;
-    }
-
-    if (!llm) {
-      return res.status(400).json({ message: 'Invalid model selected' });
-    }
-
-    const suggestions = await generateSuggestions(
-      { chat_history: chatHistory },
-      llm,
+    const requestId = uuidv4()
+    const emitter = createSearchEmitter(
+      requestId,
+      '',
+      chatHistory
     );
 
-    res.status(200).json({ suggestions: suggestions });
+    emitter.on('end', (data) => {
+      const parsedData = JSON.parse(data)
+      res.status(200).json({ suggestions: parsedData.suggestions || [] });
+      delete allRequests[requestId]
+    })
   } catch (err) {
     res.status(500).json({ message: 'An error has occurred.' });
     logger.error(`Error in generating suggestions: ${err.message}`);
