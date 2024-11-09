@@ -1,0 +1,1754 @@
+{
+  "blogs": [
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/49.pdf",
+      "title": "THE ESSENTIAL GUIDE TO THE WORLD’S CONNECTED BEHAVIOURSGLOBAL OVERVIEW REPORTDIGITAL 2024",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_49.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/49.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        1
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/61.pdf",
+      "title": "PAID UGC COMMUNITIES COLLABORATIONS CROSS PLATFORM AI SUPPORT",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_61.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/61.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        2
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/60.pdf",
+      "title": "BRA VERY THAT",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_60.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/60.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        3
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/48.pdf",
+      "title": "Подкасты в России",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_48.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/48.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        4
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/62.pdf",
+      "title": "Global ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_62.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/62.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        5
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/63.pdf",
+      "title": "MONTHLY REPORT — MARCH 2023",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_63.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/63.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        6
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/67.pdf",
+      "title": "Mobile app trends: ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_67.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/67.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        7
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/9.pdf",
+      "title": "Mobile Ad ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_9.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/9.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        8
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/8.pdf",
+      "title": "2023-2024 Digital Trends Report",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_8.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/8.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        9
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/66.pdf",
+      "title": "10Текстовые параметры: текст страницы. ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_66.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/66.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        10
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/64.pdf",
+      "title": "Обзор рынка ОФД",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_64.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/64.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        11
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/58.pdf",
+      "title": "CULTURE & TRENDS CULTURE & TRENDS CULTURE & TRENDSCULTURE & TRENDS CULTURE & TRENDS CULTURE & TRENDS",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_58.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/58.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        12
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/59.pdf",
+      "title": "Reuters Institute  ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_59.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/59.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        13
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/65.pdf",
+      "title": "Ск о льк о с т о ят клики на попу лярных ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_65.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/65.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        14
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/16.pdf",
+      "title": "SOCIAL  MEDIA  TRENDS  2024  ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_16.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/16.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        15
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/17.pdf",
+      "title": "T elegr am A ds ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_17.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/17.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        16
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/29.pdf",
+      "title": "Тренды потребления контента ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_29.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/29.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        17
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/15.pdf",
+      "title": "/Users/akozhin/projects/hackathons/hacks-ai-2024-11/train_data_mediawise/Media_Digital/presentations/15",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_15.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/15.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        18
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/14.pdf",
+      "title": "14 ноября 2023",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_14.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/14.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        19
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/28.pdf",
+      "title": "/Users/akozhin/projects/hackathons/hacks-ai-2024-11/train_data_mediawise/Media_Digital/presentations/28",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_28.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/28.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        20
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/10.pdf",
+      "title": "/Users/akozhin/projects/hackathons/hacks-ai-2024-11/train_data_mediawise/Media_Digital/presentations/10",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_10.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/10.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        21
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/38.pdf",
+      "title": "/Users/akozhin/projects/hackathons/hacks-ai-2024-11/train_data_mediawise/Media_Digital/presentations/38",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_38.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/38.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        22
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/39.pdf",
+      "title": "Р ейтинг мобильных ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_39.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/39.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        23
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/11.pdf",
+      "title": "How Gen Z Expr e ss Themse lv e s ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_11.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/11.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        24
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/13.pdf",
+      "title": "/Users/akozhin/projects/hackathons/hacks-ai-2024-11/train_data_mediawise/Media_Digital/presentations/13",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_13.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/13.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        25
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/12.pdf",
+      "title": "СПЕЦПРОЕКТЫЗачем, для кого и какИсследованиеэффективности спецпроектов Tiburon Research х RealwebCreative",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_12.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/12.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        26
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/23.pdf",
+      "title": "#LEVELUPSTATE OF MOBILE",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_23.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/23.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        27
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/37.pdf",
+      "title": "1",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_37.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/37.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        28
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/36.pdf",
+      "title": "Аудитория социальных медиа",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_36.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/36.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        29
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/22.pdf",
+      "title": "This past year has been challenging for the game industry. Several studios have ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_22.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/22.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        30
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/34.pdf",
+      "title": "January 2024",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_34.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/34.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        31
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/20.pdf",
+      "title": "2024",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_20.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/20.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        32
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/21.pdf",
+      "title": "Рунет сегодня 2023",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_21.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/21.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        33
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/35.pdf",
+      "title": "Аудитория социальных медиа",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_35.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/35.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        34
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/31.pdf",
+      "title": "21 марта 2024 года",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_31.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/31.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        35
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/25.pdf",
+      "title": "THE ESSENTIAL GUIDE TO THE WORLD’S CONNECTED BEHAVIOURSDIGITAL 2024",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_25.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/25.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        36
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/19.pdf",
+      "title": "Mobile App Market ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_19.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/19.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        37
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/18.pdf",
+      "title": "Reinvent ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_18.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/18.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        38
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/24.pdf",
+      "title": "Исследование отечественных и ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_24.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/24.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        39
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/30.pdf",
+      "title": "1",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_30.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/30.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        40
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/26.pdf",
+      "title": "TRENDS",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_26.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/26.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        41
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/32.pdf",
+      "title": "The Pace of Progress | 2024 Media Trends1",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_32.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/32.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        42
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/33.pdf",
+      "title": "BofA Securities does and seeks to do business with issuers covered in its research ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_33.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/33.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        43
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/27.pdf",
+      "title": "Telegram",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_27.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/27.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        44
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/68.pdf",
+      "title": "Комплексное исследование развития видеоигровой̆индустрии города МосквыОбзор трендов и прогнозов развития геймдева в городе Москве на основе данных из открытых источников и экспертных интервью, исследование развития видеоигровой̆индустрии города Москвы со стороны потребителей",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_68.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/68.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        45
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/40.pdf",
+      "title": "Единый годовой отчет VK за 2023 год",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_40.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/40.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        46
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/54.pdf",
+      "title": "2024INFLU- ENCER TRENDS",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_54.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/54.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        47
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/6.pdf",
+      "title": "Исследование отечественных и ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_6.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/6.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        48
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/55.pdf",
+      "title": "GamingSpotlightH1 2024 Review",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_55.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/55.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        49
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/7.pdf",
+      "title": "Ad Spending Growth Levels Off, but ID Deprecation, AI, ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_7.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/7.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        50
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/41.pdf",
+      "title": "/Users/akozhin/projects/hackathons/hacks-ai-2024-11/train_data_mediawise/Media_Digital/presentations/41",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_41.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/41.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        51
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/69.pdf",
+      "title": "The State of ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_69.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/69.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        52
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/5.pdf",
+      "title": "Newzoo’s Global Gamer Study 2024July 2024",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_5.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/5.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        53
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/57.pdf",
+      "title": "Online Nation",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_57.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/57.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        54
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/43.pdf",
+      "title": "Free Version2024Global Games Market ReportReleased August 2024",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_43.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/43.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        55
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/42.pdf",
+      "title": "Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result,  ",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_42.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/42.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        56
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/4.pdf",
+      "title": "Инфлюенс-",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_4.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/4.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        57
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/56.pdf",
+      "title": "/Users/akozhin/projects/hackathons/hacks-ai-2024-11/train_data_mediawise/Media_Digital/presentations/56",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_56.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/56.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        58
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/52.pdf",
+      "title": "INSIGHTS WITH",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_52.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/52.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        59
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/0.pdf",
+      "title": "14 ноября 2023",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_0.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/0.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        60
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/46.pdf",
+      "title": "ф р о м  р а ш а",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_46.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/46.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        61
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/47.pdf",
+      "title": "НАТАЛЬЯ БОРОЗДИНА",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_47.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/47.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        62
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/53.pdf",
+      "title": "The Sprout Social Index™",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_53.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/53.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        63
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/1.pdf",
+      "title": "1",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_1.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/1.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        64
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/45.pdf",
+      "title": "АУДИТОРИЯ TELEGRAMОтчет по данным MediascopeЯнварь 2024",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_45.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/45.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        65
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/3.pdf",
+      "title": "The PC&ConsoleGamingReport2024",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_3.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/3.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        66
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/51.pdf",
+      "title": "/Users/akozhin/projects/hackathons/hacks-ai-2024-11/train_data_mediawise/Media_Digital/presentations/51",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_51.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/51.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        67
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/2.pdf",
+      "title": "2024",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_2.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/2.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        68
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/50.pdf",
+      "title": "1",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_50.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/50.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        69
+      ],
+      "score": 1,
+      "category": "presentation"
+    },
+    {
+      "url": "https://storage.yandexcloud.net/hacks-ai-storage/44.pdf",
+      "title": "B l O C K",
+      "content": "",
+      "thumbnail": "https://storage.yandexcloud.net/hacks-ai-storage/thumb_44.png",
+      "metadata": "",
+      "engine": "local",
+      "parsed_url": [
+        "https",
+        "storage.yandexcloud.net",
+        "/hacks-ai-storage/44.pdf",
+        "",
+        "",
+        ""
+      ],
+      "template": "default.html",
+      "engines": [
+        "local"
+      ],
+      "positions": [
+        70
+      ],
+      "score": 1,
+      "category": "presentation"
+    }
+  ]
+}

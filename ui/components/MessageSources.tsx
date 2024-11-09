@@ -3,14 +3,20 @@ import {
   Dialog,
   DialogPanel,
   DialogTitle,
+  Popover,
+  PopoverButton,
+  PopoverPanel,
   Transition,
   TransitionChild,
+  PopoverGroup,
 } from '@headlessui/react';
 import { Document } from '@langchain/core/documents';
 import { Fragment, useState } from 'react';
 
 const MessageSources = ({ sources }: { sources: Document[] }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isHoverDialogOpen, setIsHoverDialogOpen] = useState(false);
+  const [currentItemIndex, setCurrentItemIndex] = useState(-1);
 
   const closeModal = () => {
     setIsDialogOpen(false);
@@ -22,37 +28,90 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
     document.body.classList.add('overflow-hidden-scrollable');
   };
 
+  const closeHoverModal = () => {
+    setIsHoverDialogOpen(false);
+    setCurrentItemIndex(-1);
+  };
+
+  const openHoverModal = (i: number) => () => {
+    setIsHoverDialogOpen(true);
+    setCurrentItemIndex(i);
+  };
+
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+    <PopoverGroup className="grid grid-cols-2 lg:grid-cols-4 gap-2">
       {sources.slice(0, 3).map((source, i) => (
-        <a
-          className="bg-light-100 hover:bg-light-200 dark:bg-dark-100 dark:hover:bg-dark-200 transition duration-200 rounded-lg p-3 flex flex-col space-y-2 font-medium"
+        <Popover
           key={i}
-          href={source.metadata.url}
-          target="_blank"
+          onMouseEnter={openHoverModal(i)}
+          onMouseLeave={closeHoverModal}
         >
-          <p className="dark:text-white text-xs overflow-hidden whitespace-nowrap text-ellipsis">
-            {source.metadata.title}
-          </p>
-          <div className="flex flex-row items-center justify-between">
-            <div className="flex flex-row items-center space-x-1">
-              <img
-                src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${source.metadata.url}`}
-                width={16}
-                height={16}
-                alt="favicon"
-                className="rounded-lg h-4 w-4"
-              />
-              <p className="text-xs text-black/50 dark:text-white/50 overflow-hidden whitespace-nowrap text-ellipsis">
-                {source.metadata.url.replace(/.+\/\/|www.|\..+/g, '')}
+          <PopoverButton
+            as="span"
+            className="bg-light-100 hover:bg-light-200 dark:bg-dark-100 dark:hover:bg-dark-200 transition duration-200 cursor-pointer rounded-lg p-3 flex flex-col space-y-2 font-medium"
+          >
+            <p className="dark:text-white text-xs overflow-hidden whitespace-nowrap text-ellipsis">
+              {source.metadata.title}
+            </p>
+            <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center space-x-1">
+                <img
+                  src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${source.metadata.url}`}
+                  width={16}
+                  height={16}
+                  alt="favicon"
+                  className="rounded-lg h-4 w-4"
+                />
+                <p className="text-xs text-black/50 dark:text-white/50 overflow-hidden whitespace-nowrap text-ellipsis">
+                  {source.metadata.url.replace(/.+\/\/|www.|\..+/g, '')}
+                </p>
+              </div>
+              <div className="flex flex-row items-center space-x-1 text-black/50 dark:text-white/50 text-xs">
+                <div className="bg-black/50 dark:bg-white/50 h-[4px] w-[4px] rounded-full" />
+                <span>{i + 1}</span>
+              </div>
+            </div>
+          </PopoverButton>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-150"
+            enterFrom="opacity-0 translate-y-1"
+            enterTo="opacity-100 translate-y-0"
+            leave="transition ease-in duration-150"
+            leaveFrom="opacity-100 translate-y-0"
+            leaveTo="opacity-0 translate-y-1"
+            show={isHoverDialogOpen && currentItemIndex === i}
+          >
+            <PopoverPanel
+              anchor="bottom"
+              static
+              className="rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 px-6 py-3 text-left align-middle shadow-xl flex flex-col space-y-2 font-medium"
+            >
+              <div className="flex flex-row items-center space-x-1">
+                <img
+                  src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${source.metadata.url}`}
+                  width={16}
+                  height={16}
+                  alt="favicon"
+                  className="rounded-lg h-4 w-4"
+                />
+                <p className="text-xs text-black/50 dark:text-white/50 overflow-hidden whitespace-nowrap text-ellipsis">
+                  {source.metadata.url.replace(/.+\/\/|www.|\..+/g, '')}
+                </p>
+              </div>
+              <a
+                className="text-black dark:text-white text-sm overflow-hidden whitespace-nowrap text-ellipsis transition duration-200 hover:text-[#24A0ED] dark:hover:text-[#24A0ED] cursor-pointer"
+                href={source.metadata.url}
+                target="_blank"
+              >
+                {source.metadata.title}
+              </a>
+              <p className="text-xs text-black/50 dark:text-white/50 max-w-md">
+                {source.pageContent}
               </p>
-            </div>
-            <div className="flex flex-row items-center space-x-1 text-black/50 dark:text-white/50 text-xs">
-              <div className="bg-black/50 dark:bg-white/50 h-[4px] w-[4px] rounded-full" />
-              <span>{i + 1}</span>
-            </div>
-          </div>
-        </a>
+            </PopoverPanel>
+          </Transition>
+        </Popover>
       ))}
       {sources.length > 3 && (
         <button
@@ -89,11 +148,11 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
                 leaveFrom="opacity-100 scale-200"
                 leaveTo="opacity-0 scale-95"
               >
-                <DialogPanel className="w-full max-w-md transform rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 p-6 text-left align-middle shadow-xl transition-all">
+                <DialogPanel className="w-full max-w-screen-lg transform rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 p-6 text-left align-middle shadow-xl transition-all">
                   <DialogTitle className="text-lg font-medium leading-6 dark:text-white">
                     Sources
                   </DialogTitle>
-                  <div className="grid grid-cols-2 gap-2 overflow-auto max-h-[300px] mt-2 pr-2">
+                  <div className="grid grid-cols-2 gap-2 overflow-auto max-h-[500px] mt-2 pr-2">
                     {sources.map((source, i) => (
                       <a
                         className="bg-light-secondary hover:bg-light-200 dark:bg-dark-secondary dark:hover:bg-dark-200 border border-light-200 dark:border-dark-200 transition duration-200 rounded-lg p-3 flex flex-col space-y-2 font-medium"
@@ -125,6 +184,9 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
                             <span>{i + 1}</span>
                           </div>
                         </div>
+                        <p className="text-xs dark:text-white">
+                          {source.pageContent}
+                        </p>
                       </a>
                     ))}
                   </div>
@@ -134,7 +196,7 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
           </div>
         </Dialog>
       </Transition>
-    </div>
+    </PopoverGroup>
   );
 };
 

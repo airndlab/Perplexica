@@ -1,7 +1,7 @@
 'use client';
 
 /* eslint-disable @next/next/no-img-element */
-import React, { MutableRefObject, useEffect, useState } from 'react';
+import React, { Fragment, MutableRefObject, useEffect, useState } from 'react';
 import { Message } from './ChatWindow';
 import { cn } from '@/lib/utils';
 import {
@@ -11,6 +11,8 @@ import {
   StopCircle,
   Layers3,
   Plus,
+  ThumbsDown,
+  ThumbsUp,
 } from 'lucide-react';
 import Markdown from 'markdown-to-jsx';
 import Copy from './MessageActions/Copy';
@@ -19,6 +21,8 @@ import MessageSources from './MessageSources';
 import SearchImages from './SearchImages';
 import SearchVideos from './SearchVideos';
 import { useSpeech } from 'react-text-to-speech';
+import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
+import { Document } from '@langchain/core/documents';
 
 const MessageBox = ({
   message,
@@ -41,6 +45,7 @@ const MessageBox = ({
 }) => {
   const [parsedMessage, setParsedMessage] = useState(message.content);
   const [speechMessage, setSpeechMessage] = useState(message.content);
+  const [feedback, setFeedback] = useState('');
 
   useEffect(() => {
     const regex = /\[(\d+)\]/g;
@@ -110,6 +115,13 @@ const MessageBox = ({
                   'prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0',
                   'max-w-none break-words text-black dark:text-white text-sm md:text-base font-medium',
                 )}
+                options={{
+                  overrides: {
+                    a: {
+                      component: (props) => <TooltipLink {...props} sources={message.sources} />
+                    }
+                  }
+                }}
               >
                 {parsedMessage}
               </Markdown>
@@ -138,6 +150,24 @@ const MessageBox = ({
                       ) : (
                         <Volume2 size={18} />
                       )}
+                    </button>
+                    <button
+                      className="p-2 text-white/70 rounded-xl hover:bg-[#1c1c1c] transition duration-200 hover:text-white"
+                      onClick={() => setFeedback((prevState) => prevState === 'like' ? '' : 'like')}
+                    >
+                      <ThumbsUp
+                        size={18}
+                        fill={feedback === 'like' ? 'currentColor' : undefined}
+                      />
+                    </button>
+                    <button
+                      className="p-2 text-white/70 rounded-xl hover:bg-[#1c1c1c] transition duration-200 hover:text-white"
+                      onClick={() => setFeedback((prevState) => prevState === 'dislike' ? '' : 'dislike')}
+                    >
+                      <ThumbsDown
+                        size={18}
+                        fill={feedback === 'dislike' ? 'currentColor' : undefined}
+                      />
                     </button>
                   </div>
                 </div>
@@ -196,6 +226,78 @@ const MessageBox = ({
         </div>
       )}
     </div>
+  );
+};
+
+const TooltipLink = ({ href, children, className, sources }: {
+  href: string,
+  children: string;
+  className: string;
+  sources: Document[];
+}) => {
+  const [isHoverDialogOpen, setIsHoverDialogOpen] = useState(false);
+  const source = sources[parseInt(children[0]) - 1]; // todo: data attribute is required
+
+  const closeHoverModal = () => {
+    setIsHoverDialogOpen(false);
+  };
+
+  const openHoverModal = () => {
+    setIsHoverDialogOpen(true);
+  };
+
+  return (
+    <Popover className="inline" onMouseEnter={openHoverModal} onMouseLeave={closeHoverModal}>
+      <PopoverButton as="span">
+        <a
+          className={className}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {children}
+        </a>
+      </PopoverButton>
+      <Transition // todo: common block with MessageSources
+        as={Fragment}
+        enter="transition ease-out duration-150"
+        enterFrom="opacity-0 translate-y-1"
+        enterTo="opacity-100 translate-y-0"
+        leave="transition ease-in duration-150"
+        leaveFrom="opacity-100 translate-y-0"
+        leaveTo="opacity-0 translate-y-1"
+        show={isHoverDialogOpen}
+      >
+        <PopoverPanel
+          anchor="bottom"
+          static
+          className="rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 px-6 py-3 text-left align-middle shadow-xl flex flex-col space-y-2 font-medium"
+        >
+          <div className="flex flex-row items-center space-x-1">
+            <img
+              src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${source.metadata.url}`}
+              width={16}
+              height={16}
+              alt="favicon"
+              className="rounded-lg h-4 w-4"
+            />
+            <p className="text-xs text-black/50 dark:text-white/50 overflow-hidden whitespace-nowrap text-ellipsis">
+              {source.metadata.url.replace(/.+\/\/|www.|\..+/g, '')}
+            </p>
+          </div>
+          <a
+            className="text-black dark:text-white text-sm overflow-hidden whitespace-nowrap text-ellipsis transition duration-200 hover:text-[#24A0ED] dark:hover:text-[#24A0ED] cursor-pointer"
+            href={source.metadata.url}
+            target="_blank"
+          >
+            {source.metadata.title}
+          </a>
+          <p className="text-xs text-black/50 dark:text-white/50 max-w-md">
+            {source.pageContent}
+          </p>
+        </PopoverPanel>
+      </Transition>
+    </Popover>
   );
 };
 
