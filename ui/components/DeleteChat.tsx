@@ -30,7 +30,7 @@ const DeleteChat = ({
     setLoading(true);
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/chats/${chatId}`,
+        `http://158.160.68.33:3001/api/chats/${chatId}`,
         {
           method: 'DELETE',
           headers: {

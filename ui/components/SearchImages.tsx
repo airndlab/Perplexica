@@ -37,7 +37,7 @@ const SearchImages = ({
             const customOpenAIKey = localStorage.getItem('openAIApiKey');
 
             const res = await fetch(
-              `${process.env.NEXT_PUBLIC_API_URL}/images`,
+              `http://158.160.68.33:3001/api/images`,
               {
                 method: 'POST',
                 headers: {

@@ -39,7 +39,7 @@ const useSocket = (
         );
 
         const providers = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/models`,
+          `http://158.160.68.33:3001/api/models`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -219,7 +219,7 @@ const loadMessages = async (
   setNotFound: (notFound: boolean) => void,
 ) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/chats/${chatId}`,
+    `http://158.160.68.33:3001/api/chats/${chatId}`,
     {
       method: 'GET',
       headers: {
@@ -270,7 +270,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
 
   const [isWSReady, setIsWSReady] = useState(false);
   const ws = useSocket(
-    process.env.NEXT_PUBLIC_WS_URL!,
+    "ws://158.160.68.33:3001",
     setIsWSReady,
     setHasError,
   );
