@@ -99,9 +99,13 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
                   {source.metadata.url.replace(/.+\/\/|www.|\..+/g, '')}
                 </p>
               </div>
-              <p className="dark:text-white text-sm overflow-hidden whitespace-nowrap text-ellipsis">
+              <a
+                className="text-black dark:text-white text-sm overflow-hidden whitespace-nowrap text-ellipsis transition duration-200 hover:text-[#24A0ED] dark:hover:text-[#24A0ED] cursor-pointer"
+                href={source.metadata.url}
+                target="_blank"
+              >
                 {source.metadata.title}
-              </p>
+              </a>
               <p className="text-xs text-black/50 dark:text-white/50 max-w-md">
                 {source.pageContent}
               </p>
