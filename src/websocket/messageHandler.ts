@@ -52,20 +52,13 @@ const handleEmitterEvents = (
     const parsedData = JSON.parse(data)
     ws.send(
       JSON.stringify({
-        type: 'message',
-        data: parsedData.message,
+        type: 'all',
+        message: parsedData.message,
+        sources: parsedData.sources,
         messageId: messageId,
       }),
     );
     recievedMessage += parsedData.message;
-
-    ws.send(
-      JSON.stringify({
-        type: 'sources',
-        data: parsedData.sources,
-        messageId: messageId,
-      }),
-    );
     sources = parsedData.sources;
 
     ws.send(JSON.stringify({ type: 'messageEnd', messageId: messageId }));

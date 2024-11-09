@@ -380,31 +380,13 @@ const ChatWindow = ({ id }: { id?: string }) => {
         return;
       }
 
-      if (data.type === 'sources') {
-        sources = data.data;
+      if (data.type === 'all') {
+        sources = data.sources;
         if (!added) {
           setMessages((prevMessages) => [
             ...prevMessages,
             {
-              content: '',
-              messageId: data.messageId,
-              chatId: chatId!,
-              role: 'assistant',
-              sources: sources,
-              createdAt: new Date(),
-            },
-          ]);
-          added = true;
-        }
-        setMessageAppeared(true);
-      }
-
-      if (data.type === 'message') {
-        if (!added) {
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            {
-              content: data.data,
+              content: data.message,
               messageId: data.messageId,
               chatId: chatId!,
               role: 'assistant',
@@ -418,14 +400,14 @@ const ChatWindow = ({ id }: { id?: string }) => {
         setMessages((prev) =>
           prev.map((message) => {
             if (message.messageId === data.messageId) {
-              return { ...message, content: message.content + data.data };
+              return { ...message, content: message.content + data.message };
             }
 
             return message;
           }),
         );
 
-        recievedMessage += data.data;
+        recievedMessage += data.message;
         setMessageAppeared(true);
       }
 
