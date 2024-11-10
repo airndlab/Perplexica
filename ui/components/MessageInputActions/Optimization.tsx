@@ -10,19 +10,19 @@ import { Fragment } from 'react';
 
 const OptimizationModes = [
   {
-    key: 'speed',
+    key: 'Телекоммуникации',
     title: 'Телекоммуникации',
     description: 'Prioritize speed and get the quickest possible answer.',
     icon: <Zap size={20} className="text-[#FF9800]" />,
   },
   {
-    key: 'balanced',
+    key: 'Ритейл',
     title: 'Ритейл',
     description: 'Find the right balance between speed and accuracy',
     icon: <Sliders size={20} className="text-[#4CAF50]" />,
   },
   {
-    key: 'quality0',
+    key: 'Финансовые услуги',
     title: 'Финансовые услуги',
     description: 'Get the most thorough and accurate answer',
     icon: (
@@ -33,31 +33,31 @@ const OptimizationModes = [
     ),
   },
   {
-    key: 'quality1',
+    key: 'Технологии и электроника',
     title: 'Технологии и электроника',
   },
   {
-    key: 'quality2',
+    key: 'Автомобильная промышленность',
     title: 'Автомобильная промышленность',
   },
   {
-    key: 'quality3',
+    key: 'Фармацевтика и здравоохранение',
     title: 'Фармацевтика и здравоохранение',
   },
   {
-    key: 'quality4',
+    key: 'Продукты питания и напитки',
     title: 'Продукты питания и напитки',
   },
   {
-    key: 'quality5',
+    key: 'Строительство и недвижимость',
     title: 'Строительство и недвижимость',
   },
   {
-    key: 'quality6',
+    key: 'Мода и одежда',
     title: 'Мода и одежда',
   },
   {
-    key: 'quality7',
+    key: 'Транспорт',
     title: 'Транспорт',
   },
 ];

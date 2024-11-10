@@ -34,7 +34,7 @@ const EmptyChat = ({
         <Image
           width={300}
           height={300}
-          src="/mascot.jpg"
+          src="/mascot.png"
           alt="mascot"
         />
         <h2 className="text-black/70 dark:text-white/70 text-3xl font-medium -mt-8">
