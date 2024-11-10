@@ -217,6 +217,7 @@ const loadMessages = async (
   setChatHistory: (history: [string, string][]) => void,
   setFocusMode: (mode: string) => void,
   setNotFound: (notFound: boolean) => void,
+  messagesRef: any,
 ) => {
   const res = await fetch(
     `http://158.160.68.33:3001/api/chats/${chatId}`,
@@ -243,7 +244,11 @@ const loadMessages = async (
     };
   }) as Message[];
 
-  setMessages(messages);
+  // @ts-ignore
+  setMessages(() => {
+    messagesRef.current = messages;
+    return messages
+  });
 
   const history = messages.map((msg) => {
     return [msg.role, msg.content];
@@ -302,6 +307,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
         setChatHistory,
         setFocusMode,
         setNotFound,
+        messagesRef,
       );
     } else if (!chatId) {
       setNewChatCreated(true);
@@ -323,9 +329,9 @@ const ChatWindow = ({ id }: { id?: string }) => {
 
   const messagesRef = useRef<Message[]>([]);
 
-  useEffect(() => {
-    messagesRef.current = messages;
-  }, [messages]);
+  // useEffect(() => {
+  //   messagesRef.current = messages;
+  // }, [messages]);
 
   useEffect(() => {
     if (isMessagesLoaded && isWSReady) {
@@ -362,16 +368,22 @@ const ChatWindow = ({ id }: { id?: string }) => {
       }),
     );
 
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      {
-        content: message,
-        messageId: messageId,
-        chatId: chatId!,
-        role: 'user',
-        createdAt: new Date(),
-      },
-    ]);
+    // @ts-ignore
+    setMessages((prevMessages) => {
+      const updatedMessages = [
+        ...prevMessages,
+        {
+          content: message,
+          messageId: messageId,
+          chatId: chatId!,
+          role: 'user',
+          createdAt: new Date(),
+        },
+      ];
+      // @ts-ignore
+      messagesRef.current = updatedMessages
+      return updatedMessages;
+    });
 
     const messageHandler = async (e: MessageEvent) => {
       const data = JSON.parse(e.data);
@@ -384,17 +396,24 @@ const ChatWindow = ({ id }: { id?: string }) => {
 
       if (data.type === 'all') {
         sources = data.sources;
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          {
-            content: data.message,
-            messageId: data.messageId,
-            chatId: chatId!,
-            role: 'assistant',
-            sources: sources,
-            createdAt: new Date(),
-          },
-        ]);
+        // @ts-ignore
+        setMessages((prevMessages) => {
+          const updatedMessages = [
+            ...prevMessages,
+            {
+              content: data.message,
+              messageId: data.messageId,
+              chatId: chatId!,
+              role: 'assistant',
+              sources: sources,
+              createdAt: new Date(),
+            },
+          ];
+
+          // @ts-ignore
+          messagesRef.current = updatedMessages;
+          return updatedMessages;
+        });
 
         recievedMessage += data.message;
         setMessageAppeared(true);
@@ -419,14 +438,17 @@ const ChatWindow = ({ id }: { id?: string }) => {
           !lastMsg.suggestions
         ) {
           const suggestions = await getSuggestions(messagesRef.current);
-          setMessages((prev) =>
-            prev.map((msg) => {
-              if (msg.messageId === lastMsg.messageId) {
-                return { ...msg, suggestions: suggestions };
-              }
-              return msg;
-            }),
-          );
+          setMessages((prev) => {
+           const updatedMessages = prev.map((msg) => {
+             if (msg.messageId === lastMsg.messageId) {
+               return { ...msg, suggestions: suggestions };
+             }
+             return msg;
+           });
+
+            messagesRef.current = updatedMessages;
+            return updatedMessages;
+          });
         }
       }
     };
@@ -442,7 +464,9 @@ const ChatWindow = ({ id }: { id?: string }) => {
     const message = messages[index - 1];
 
     setMessages((prev) => {
-      return [...prev.slice(0, messages.length > 2 ? index - 1 : 0)];
+      const updatedMessages = [...prev.slice(0, messages.length > 2 ? index - 1 : 0)];
+      messagesRef.current = updatedMessages;
+      return updatedMessages;
     });
     setChatHistory((prev) => {
       return [...prev.slice(0, messages.length > 2 ? index - 1 : 0)];
