@@ -282,7 +282,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
   const [messages, setMessages] = useState<Message[]>([]);
 
   const [focusMode, setFocusMode] = useState('media');
-  const [optimizationMode, setOptimizationMode] = useState('Телекоммуникации');
+  const [optimizationMode, setOptimizationMode] = useState('');
 
   const [isMessagesLoaded, setIsMessagesLoaded] = useState(false);
 

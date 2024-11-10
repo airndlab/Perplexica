@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImagesIcon, PlusIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { Message } from './ChatWindow';
@@ -14,14 +14,32 @@ type Image = {
 const SearchImages = ({
   query,
   chatHistory,
+  sources,
 }: {
   query: string;
   chatHistory: Message[];
+  sources: any;
 }) => {
+  // const images = sources?.[0]?.metadata?.thumbnail ? sources.map((item: any) => {
+  //   return {
+  //     img_src: item?.metadata?.thumbnail,
+  //     title: item?.metadata?.file_title,
+  //   }
+  // }) : null;
   const [images, setImages] = useState<Image[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [slides, setSlides] = useState<any[]>([]);
+
+  // useEffect(() => {
+  //   setSlides(
+  //     images ? images.map((image: Image) => {
+  //       return {
+  //         src: image.img_src,
+  //       };
+  //     }) : [],
+  //   );
+  // }, [])
 
   return (
     <>
@@ -30,44 +48,52 @@ const SearchImages = ({
           onClick={async () => {
             setLoading(true);
 
-            const chatModelProvider = localStorage.getItem('chatModelProvider');
-            const chatModel = localStorage.getItem('chatModel');
+            // const chatModelProvider = localStorage.getItem('chatModelProvider');
+            // const chatModel = localStorage.getItem('chatModel');
+            //
+            // const customOpenAIBaseURL = localStorage.getItem('openAIBaseURL');
+            // const customOpenAIKey = localStorage.getItem('openAIApiKey');
 
-            const customOpenAIBaseURL = localStorage.getItem('openAIBaseURL');
-            const customOpenAIKey = localStorage.getItem('openAIApiKey');
+            // const res = await fetch(
+            //   `http://158.160.68.33:3001/api/images`,
+            //   {
+            //     method: 'POST',
+            //     headers: {
+            //       'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //       query: query,
+            //       chatHistory: chatHistory,
+            //       chatModel: {
+            //         provider: chatModelProvider,
+            //         model: chatModel,
+            //         ...(chatModelProvider === 'custom_openai' && {
+            //           customOpenAIBaseURL: customOpenAIBaseURL,
+            //           customOpenAIKey: customOpenAIKey,
+            //         }),
+            //       },
+            //     }),
+            //   },
+            // );
 
-            const res = await fetch(
-              `http://158.160.68.33:3001/api/images`,
-              {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  query: query,
-                  chatHistory: chatHistory,
-                  chatModel: {
-                    provider: chatModelProvider,
-                    model: chatModel,
-                    ...(chatModelProvider === 'custom_openai' && {
-                      customOpenAIBaseURL: customOpenAIBaseURL,
-                      customOpenAIKey: customOpenAIKey,
-                    }),
-                  },
-                }),
-              },
-            );
+            // const data = await res.json();
 
-            const data = await res.json();
+            // const images = data.images ?? [];
 
-            const images = data.images ?? [];
+            const images = sources ? sources.map((item: any) => {
+              return {
+                img_src: item?.metadata?.thumbnail,
+                title: item?.metadata?.file_title,
+              }
+            }) : null;
+
             setImages(images);
             setSlides(
-              images.map((image: Image) => {
+              images ? images.map((image: Image) => {
                 return {
                   src: image.img_src,
                 };
-              }),
+              }) : [],
             );
             setLoading(false);
           }}

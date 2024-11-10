@@ -19,20 +19,20 @@ import { Fragment } from 'react';
 const focusModes = [
   {
     key: 'media',
-    title: 'Медиа',
-    description: 'Searches across all of the internet',
+    title: 'Маркетинговые материалы',
+    description: 'Исследованиях, анализ рынков, презентации и конкурсные документы.',
     icon: <Globe size={20} />,
   },
   {
     key: 'education',
-    title: 'Обучение',
-    description: 'Search in published academic papers',
+    title: 'Обучающие материалы',
+    description: 'Внутренние и внешние тренинги, презентации, руководства.',
     icon: <SwatchBook size={20} />,
   },
   {
     key: 'processes',
-    title: 'Процессы',
-    description: 'Chat without searching the web',
+    title: 'Внутренние документы',
+    description: 'Организационно-процессные документы и инструкциям для выполнения задач.',
     icon: <Pencil size={16} />,
   },
 ];
