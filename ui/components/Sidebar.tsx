@@ -70,7 +70,9 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
 
           <div>
 
-            <a href="http://158.160.68.33:3003/public/dashboard/57e69abe-defb-4f43-acc7-55bfb97ee071" target="_blank">
+            <a href="http://158.160.68.33:3003/public/dashboard/57e69abe-defb-4f43-acc7-55bfb97ee071#theme=night"
+               target="_blank"
+            >
               <Settings
                 onClick={() => setIsSettingsOpen(!isSettingsOpen)}
                 className="cursor-pointer"
