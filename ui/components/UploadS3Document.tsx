@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import AWS from 'aws-sdk';
 import { CopyPlus } from 'lucide-react';
@@ -87,6 +87,36 @@ const SettingsDialog = ({ className }: { className: any }) => {
 };
 
 const Loading = () => {
+  const loadingTexts = [
+    "Загрузка...",
+    "Индексация...",
+    "Саммаризация...",
+    "Категоризация...",
+    "Генерация превью..."
+  ];
+
+  const [currentText, setCurrentText] = useState(loadingTexts[0]);
+  const [textIndex, setTextIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTextIndex((prevIndex) => (prevIndex + 1) % loadingTexts.length);
+    }, 2000);
+
+    // Очищаем интервал через 30 секунд
+    const timeoutId = setTimeout(() => clearInterval(intervalId), 10000);
+
+    // Очищаем таймеры при размонтировании компонента
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  useEffect(() => {
+    setCurrentText(loadingTexts[textIndex]);
+  }, [textIndex]);
+
   return ReactDOM.createPortal(
     <div className="flex flex-col items-center justify-center min-h-screen fixed inset-0 z-50">
       <div className="fixed inset-0 bg-white/50 dark:bg-black/50"></div>
@@ -108,7 +138,7 @@ const Loading = () => {
           />
         </svg>
       </div>
-      <h1 className="z-10 text-3xl font-medium p-2">Загрузка...</h1>
+      <h1 className="z-10 text-3xl font-medium p-2">{currentText}</h1>
     </div>,
     document.body,
   )
