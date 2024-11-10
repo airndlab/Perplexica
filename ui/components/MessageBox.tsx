@@ -133,7 +133,7 @@ const MessageBox = ({
                       <Share size={18} />
                     </button> */}
                     {/*<Rewrite rewrite={rewrite} messageId={message.messageId} />*/}
-                    <Copy initialMessage={message.content} message={message} />
+                    {/*<Copy initialMessage={message.content} message={message} />*/}
                   </div>
                   <div className="flex flex-row items-center space-x-1">
                     {/*<button*/}
@@ -183,7 +183,7 @@ const MessageBox = ({
                     <div className="flex flex-col space-y-3 text-black dark:text-white">
                       <div className="flex flex-row items-center space-x-2 mt-4">
                         <Layers3 />
-                        <h3 className="text-xl font-medium">Похожие</h3>
+                        <h3 className="text-xl font-medium">Уточняющие вопросы</h3>
                       </div>
                       <div className="flex flex-col space-y-3">
                         {message.suggestions.map((suggestion, i) => (
@@ -214,16 +214,17 @@ const MessageBox = ({
                 )}
             </div>
           </div>
-          {/*<div className="lg:sticky lg:top-20 flex flex-col items-center space-y-3 w-full lg:w-3/12 z-30 h-full pb-4">*/}
-          {/*  <SearchImages*/}
-          {/*    query={history[messageIndex - 1].content}*/}
-          {/*    chatHistory={history.slice(0, messageIndex - 1)}*/}
-          {/*  />*/}
+          <div className="lg:sticky lg:top-20 flex flex-col items-center space-y-3 w-full lg:w-3/12 z-30 h-full pb-4">
+            <SearchImages
+              query={history[messageIndex - 1].content}
+              chatHistory={history.slice(0, messageIndex - 1)}
+              sources={message.sources}
+            />
           {/*  <SearchVideos*/}
           {/*    chatHistory={history.slice(0, messageIndex - 1)}*/}
           {/*    query={history[messageIndex - 1].content}*/}
           {/*  />*/}
-          {/*</div>*/}
+          </div>
         </div>
       )}
     </div>
