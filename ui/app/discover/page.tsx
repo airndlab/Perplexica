@@ -19,7 +19,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('https://storage.yandexcloud.net/hacks-ai-storage/discover.json', {
+        const res = await fetch('/discover.json', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const Page = () => {
           {discover &&
             discover?.map((item, i) => (
               <Link
-                href={`/?q=Саммари: ${item.metadata.file_name ?? item.url}`}
+                href={`/?q=Сводка: ${item.metadata.file_name ?? item.url}`}
                 key={i}
                 className="max-w-sm rounded-lg overflow-hidden bg-light-secondary dark:bg-dark-secondary hover:-translate-y-[1px] transition duration-200 relative"
               >

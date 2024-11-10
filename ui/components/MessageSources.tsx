@@ -130,7 +130,7 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
               </a>
               <div className="flex flex-row items-center space-x-1 text-black/50 dark:text-white/50 text-xs absolute right-[7px] bottom-[7px]">
                 <Link
-                  href={`/?q=Саммари: ${source.metadata.file_name}`}
+                  href={`/?q=Сводка: ${source.metadata.file_name}`}
                   className="cursor-pointer hover:text-white transition duration-200"
                 >
                   <File width={15} height={15} className="" />
@@ -209,7 +209,7 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
                         <div className="flex flex-row items-center space-x-1 text-black/50 dark:text-white/50 text-xs absolute right-[23px] bottom-[7px]">
                           <Link
                             onClick={(e) => e.stopPropagation()}
-                            href={`/?q=Саммари: ${source.metadata.file_name}`}
+                            href={`/?q=Сводка: ${source.metadata.file_name}`}
                             className="cursor-pointer hover:text-white transition duration-200"
                           >
                             <File width={15} height={15} className="" />

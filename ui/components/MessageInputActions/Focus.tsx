@@ -95,9 +95,9 @@ const Focus = ({
                   {mode.icon}
                   <p className="text-sm font-medium">{mode.title}</p>
                 </div>
-                {/*<p className="text-black/70 dark:text-white/70 text-xs">*/}
-                {/*  {mode.description}*/}
-                {/*</p>*/}
+                <p className="text-black/70 dark:text-white/70 text-xs">
+                  {mode.description}
+                </p>
               </PopoverButton>
             ))}
           </div>
