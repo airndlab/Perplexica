@@ -15,15 +15,15 @@ const SettingsDialog = ({ className }) => {
     }, 10000);
 
     // S3 Bucket Name
-    const S3_BUCKET = "hacks-ai-storage";
+    const S3_BUCKET = `${process.env.S3_BUCKET}`;
 
     // S3 Region
     const REGION = "";
 
     // S3 Credentials
     AWS.config.update({
-      accessKeyId: "",
-      secretAccessKey: "",
+      accessKeyId: `${process.env.S3_ACCESS_KEY}`,
+      secretAccessKey: `${process.env.S3_SECRET_ACCESS_KEY}`,
     });
     const s3 = new AWS.S3({
       params: { Bucket: S3_BUCKET },
