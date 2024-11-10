@@ -355,6 +355,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
         },
         space: focusMode,
         category: optimizationMode,
+        filename: message.startsWith("Сводка:") ? message.substring(message.indexOf(":") + 2) : undefined,
         focusMode: 'webSearch',
         optimizationMode: 'speed',
         history: [...chatHistory, ['human', message]],
