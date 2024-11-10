@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { BookOpenText, Home, Search, SquarePen, CopyPlus } from 'lucide-react';
+import { BookOpenText, Home, Search, SquarePen, CopyPlus, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import React, { useState, type ReactNode } from 'react';
@@ -68,7 +68,18 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
             ))}
           </VerticalIconContainer>
 
-          <UploadS3Document className="cursor-pointer" />
+          <div>
+
+            <a href="http://158.160.68.33:3003/public/dashboard/57e69abe-defb-4f43-acc7-55bfb97ee071" target="_blank">
+              <Settings
+                onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+                className="cursor-pointer"
+              />
+            </a>
+
+            <UploadS3Document className="cursor-pointer mt-[30px]" />
+          </div>
+
 
           {/*<CopyPlus*/}
           {/*  onClick={() => setIsSettingsOpen(!isSettingsOpen)}*/}
