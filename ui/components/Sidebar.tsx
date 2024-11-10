@@ -1,12 +1,13 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { BookOpenText, Home, Search, SquarePen, Settings } from 'lucide-react';
+import { BookOpenText, Home, Search, SquarePen, CopyPlus } from 'lucide-react';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import React, { useState, type ReactNode } from 'react';
 import Layout from './Layout';
 import SettingsDialog from './SettingsDialog';
+import UploadS3Document from '@/components/UploadS3Document';
 
 const VerticalIconContainer = ({ children }: { children: ReactNode }) => {
   return (
@@ -67,15 +68,17 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
             ))}
           </VerticalIconContainer>
 
-          <Settings
-            onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-            className="cursor-pointer"
-          />
+          <UploadS3Document className="cursor-pointer" />
 
-          <SettingsDialog
-            isOpen={isSettingsOpen}
-            setIsOpen={setIsSettingsOpen}
-          />
+          {/*<CopyPlus*/}
+          {/*  onClick={() => setIsSettingsOpen(!isSettingsOpen)}*/}
+          {/*  className="cursor-pointer"*/}
+          {/*/>*/}
+
+          {/*<SettingsDialog*/}
+          {/*  isOpen={isSettingsOpen}*/}
+          {/*  setIsOpen={setIsSettingsOpen}*/}
+          {/*/>*/}
         </div>
       </div>
 

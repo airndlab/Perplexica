@@ -11,19 +11,19 @@ import { Fragment } from 'react';
 const OptimizationModes = [
   {
     key: 'speed',
-    title: 'Speed',
+    title: 'Телекоммуникации',
     description: 'Prioritize speed and get the quickest possible answer.',
     icon: <Zap size={20} className="text-[#FF9800]" />,
   },
   {
     key: 'balanced',
-    title: 'Balanced',
+    title: 'Ритейл',
     description: 'Find the right balance between speed and accuracy',
     icon: <Sliders size={20} className="text-[#4CAF50]" />,
   },
   {
-    key: 'quality',
-    title: 'Quality (Soon)',
+    key: 'quality0',
+    title: 'Финансовые услуги',
     description: 'Get the most thorough and accurate answer',
     icon: (
       <Star
@@ -31,6 +31,34 @@ const OptimizationModes = [
         className="text-[#2196F3] dark:text-[#BBDEFB] fill-[#BBDEFB] dark:fill-[#2196F3]"
       />
     ),
+  },
+  {
+    key: 'quality1',
+    title: 'Технологии и электроника',
+  },
+  {
+    key: 'quality2',
+    title: 'Автомобильная промышленность',
+  },
+  {
+    key: 'quality3',
+    title: 'Фармацевтика и здравоохранение',
+  },
+  {
+    key: 'quality4',
+    title: 'Продукты питания и напитки',
+  },
+  {
+    key: 'quality5',
+    title: 'Строительство и недвижимость',
+  },
+  {
+    key: 'quality6',
+    title: 'Мода и одежда',
+  },
+  {
+    key: 'quality7',
+    title: 'Транспорт',
   },
 ];
 
@@ -48,10 +76,10 @@ const Optimization = ({
         className="p-2 text-black/50 dark:text-white/50 rounded-xl hover:bg-light-secondary dark:hover:bg-dark-secondary active:scale-95 transition duration-200 hover:text-black dark:hover:text-white"
       >
         <div className="flex flex-row items-center space-x-1">
-          {
-            OptimizationModes.find((mode) => mode.key === optimizationMode)
-              ?.icon
-          }
+          {/*{*/}
+          {/*  OptimizationModes.find((mode) => mode.key === optimizationMode)*/}
+          {/*    ?.icon*/}
+          {/*}*/}
           <p className="text-xs font-medium">
             {
               OptimizationModes.find((mode) => mode.key === optimizationMode)
@@ -86,12 +114,12 @@ const Optimization = ({
                 )}
               >
                 <div className="flex flex-row items-center space-x-1 text-black dark:text-white">
-                  {mode.icon}
+                  {/*{mode.icon}*/}
                   <p className="text-sm font-medium">{mode.title}</p>
                 </div>
-                <p className="text-black/70 dark:text-white/70 text-xs">
-                  {mode.description}
-                </p>
+                {/*<p className="text-black/70 dark:text-white/70 text-xs">*/}
+                {/*  {mode.description}*/}
+                {/*</p>*/}
               </PopoverButton>
             ))}
           </div>

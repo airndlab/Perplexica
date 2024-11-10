@@ -18,52 +18,22 @@ import { Fragment } from 'react';
 
 const focusModes = [
   {
-    key: 'webSearch',
-    title: 'All',
+    key: 'media',
+    title: 'Медиа',
     description: 'Searches across all of the internet',
     icon: <Globe size={20} />,
   },
   {
-    key: 'academicSearch',
-    title: 'Academic',
+    key: 'education',
+    title: 'Обучение',
     description: 'Search in published academic papers',
     icon: <SwatchBook size={20} />,
   },
   {
-    key: 'writingAssistant',
-    title: 'Writing',
+    key: 'processes',
+    title: 'Процессы',
     description: 'Chat without searching the web',
     icon: <Pencil size={16} />,
-  },
-  {
-    key: 'wolframAlphaSearch',
-    title: 'Wolfram Alpha',
-    description: 'Computational knowledge engine',
-    icon: <BadgePercent size={20} />,
-  },
-  {
-    key: 'youtubeSearch',
-    title: 'Youtube',
-    description: 'Search and watch videos',
-    icon: (
-      <SiYoutube
-        className="h-5 w-auto mr-0.5"
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      />
-    ),
-  },
-  {
-    key: 'redditSearch',
-    title: 'Reddit',
-    description: 'Search for discussions and opinions',
-    icon: (
-      <SiReddit
-        className="h-5 w-auto mr-0.5"
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      />
-    ),
   },
 ];
 
@@ -125,9 +95,9 @@ const Focus = ({
                   {mode.icon}
                   <p className="text-sm font-medium">{mode.title}</p>
                 </div>
-                <p className="text-black/70 dark:text-white/70 text-xs">
-                  {mode.description}
-                </p>
+                {/*<p className="text-black/70 dark:text-white/70 text-xs">*/}
+                {/*  {mode.description}*/}
+                {/*</p>*/}
               </PopoverButton>
             ))}
           </div>

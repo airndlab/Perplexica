@@ -12,7 +12,7 @@ import {
   Layers3,
   Plus,
   ThumbsDown,
-  ThumbsUp,
+  ThumbsUp, File,
 } from 'lucide-react';
 import Markdown from 'markdown-to-jsx';
 import Copy from './MessageActions/Copy';
@@ -23,6 +23,7 @@ import SearchVideos from './SearchVideos';
 import { useSpeech } from 'react-text-to-speech';
 import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
 import { Document } from '@langchain/core/documents';
+import Link from 'next/link';
 
 const MessageBox = ({
   message,
@@ -91,7 +92,7 @@ const MessageBox = ({
                 <div className="flex flex-row items-center space-x-2">
                   <BookCopy className="text-black dark:text-white" size={20} />
                   <h3 className="text-black dark:text-white font-medium text-xl">
-                    Sources
+                    Источники
                   </h3>
                 </div>
                 <MessageSources sources={message.sources} />
@@ -107,7 +108,7 @@ const MessageBox = ({
                   size={20}
                 />
                 <h3 className="text-black dark:text-white font-medium text-xl">
-                  Answer
+                  Ответ
                 </h3>
               </div>
               <Markdown
@@ -131,26 +132,26 @@ const MessageBox = ({
                     {/*  <button className="p-2 text-black/70 dark:text-white/70 rounded-xl hover:bg-light-secondary dark:hover:bg-dark-secondary transition duration-200 hover:text-black text-black dark:hover:text-white">
                       <Share size={18} />
                     </button> */}
-                    <Rewrite rewrite={rewrite} messageId={message.messageId} />
+                    {/*<Rewrite rewrite={rewrite} messageId={message.messageId} />*/}
+                    <Copy initialMessage={message.content} message={message} />
                   </div>
                   <div className="flex flex-row items-center space-x-1">
-                    <Copy initialMessage={message.content} message={message} />
-                    <button
-                      onClick={() => {
-                        if (speechStatus === 'started') {
-                          stop();
-                        } else {
-                          start();
-                        }
-                      }}
-                      className="p-2 text-black/70 dark:text-white/70 rounded-xl hover:bg-light-secondary dark:hover:bg-dark-secondary transition duration-200 hover:text-black dark:hover:text-white"
-                    >
-                      {speechStatus === 'started' ? (
-                        <StopCircle size={18} />
-                      ) : (
-                        <Volume2 size={18} />
-                      )}
-                    </button>
+                    {/*<button*/}
+                    {/*  onClick={() => {*/}
+                    {/*    if (speechStatus === 'started') {*/}
+                    {/*      stop();*/}
+                    {/*    } else {*/}
+                    {/*      start();*/}
+                    {/*    }*/}
+                    {/*  }}*/}
+                    {/*  className="p-2 text-black/70 dark:text-white/70 rounded-xl hover:bg-light-secondary dark:hover:bg-dark-secondary transition duration-200 hover:text-black dark:hover:text-white"*/}
+                    {/*>*/}
+                    {/*  {speechStatus === 'started' ? (*/}
+                    {/*    <StopCircle size={18} />*/}
+                    {/*  ) : (*/}
+                    {/*    <Volume2 size={18} />*/}
+                    {/*  )}*/}
+                    {/*</button>*/}
                     <button
                       className="p-2 text-white/70 rounded-xl hover:bg-[#1c1c1c] transition duration-200 hover:text-white"
                       onClick={() => setFeedback((prevState) => prevState === 'like' ? '' : 'like')}
@@ -182,7 +183,7 @@ const MessageBox = ({
                     <div className="flex flex-col space-y-3 text-black dark:text-white">
                       <div className="flex flex-row items-center space-x-2 mt-4">
                         <Layers3 />
-                        <h3 className="text-xl font-medium">Related</h3>
+                        <h3 className="text-xl font-medium">Похожие</h3>
                       </div>
                       <div className="flex flex-col space-y-3">
                         {message.suggestions.map((suggestion, i) => (
@@ -213,16 +214,16 @@ const MessageBox = ({
                 )}
             </div>
           </div>
-          <div className="lg:sticky lg:top-20 flex flex-col items-center space-y-3 w-full lg:w-3/12 z-30 h-full pb-4">
-            <SearchImages
-              query={history[messageIndex - 1].content}
-              chatHistory={history.slice(0, messageIndex - 1)}
-            />
-            <SearchVideos
-              chatHistory={history.slice(0, messageIndex - 1)}
-              query={history[messageIndex - 1].content}
-            />
-          </div>
+          {/*<div className="lg:sticky lg:top-20 flex flex-col items-center space-y-3 w-full lg:w-3/12 z-30 h-full pb-4">*/}
+          {/*  <SearchImages*/}
+          {/*    query={history[messageIndex - 1].content}*/}
+          {/*    chatHistory={history.slice(0, messageIndex - 1)}*/}
+          {/*  />*/}
+          {/*  <SearchVideos*/}
+          {/*    chatHistory={history.slice(0, messageIndex - 1)}*/}
+          {/*    query={history[messageIndex - 1].content}*/}
+          {/*  />*/}
+          {/*</div>*/}
         </div>
       )}
     </div>
@@ -271,30 +272,47 @@ const TooltipLink = ({ href, children, className, sources }: {
         <PopoverPanel
           anchor="bottom"
           static
-          className="rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 px-6 py-3 text-left align-middle shadow-xl flex flex-col space-y-2 font-medium"
+          className="rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 px-6 py-3 text-left align-middle shadow-xl flex font-medium"
         >
-          <div className="flex flex-row items-center space-x-1">
-            <img
-              src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${source.metadata.url}`}
-              width={16}
-              height={16}
-              alt="favicon"
-              className="rounded-lg h-4 w-4"
-            />
-            <p className="text-xs text-black/50 dark:text-white/50 overflow-hidden whitespace-nowrap text-ellipsis">
-              {source.metadata.url.replace(/.+\/\/|www.|\..+/g, '')}
-            </p>
-          </div>
+          {/*<div className="flex flex-row items-center space-x-1">*/}
+          {/*<img*/}
+          {/*  src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${source.metadata.url}`}*/}
+          {/*  width={16}*/}
+          {/*  height={16}*/}
+          {/*  alt="favicon"*/}
+          {/*  className="rounded-lg h-4 w-4"*/}
+          {/*/>*/}
+          {/*<p className="text-xs text-black/50 dark:text-white/50 overflow-hidden whitespace-nowrap text-ellipsis">*/}
+          {/*  {source.metadata.url.replace(/.+\/\/|www.|\..+/g, '')}*/}
+          {/*</p>*/}
+          {/*</div>*/}
+          <img
+            className="object-contain"
+            width={70}
+            height={70}
+            src={source.metadata.thumbnail}
+            alt=""
+          />
           <a
-            className="text-black dark:text-white text-sm overflow-hidden whitespace-nowrap text-ellipsis transition duration-200 hover:text-[#24A0ED] dark:hover:text-[#24A0ED] cursor-pointer"
+            className="max-w-[300px] ml-2 text-black dark:text-white text-sm overflow-hidden transition duration-200 hover:text-[#24A0ED] dark:hover:text-[#24A0ED] cursor-pointer"
             href={source.metadata.url}
             target="_blank"
           >
             {source.metadata.title}
           </a>
-          <p className="text-xs text-black/50 dark:text-white/50 max-w-md">
-            {source.pageContent}
-          </p>
+          <div className="flex flex-row items-center space-x-1 text-black/50 dark:text-white/50 text-xs absolute right-[7px] bottom-[7px]">
+            <Link
+              href={`/?q=Саммари: ${source.metadata.file_name}`}
+              className="cursor-pointer hover:text-white transition duration-200"
+            >
+              <File width={15} height={15} className="" />
+            </Link>
+            {/*<div className="bg-black/50 dark:bg-white/50 h-[4px] w-[4px] rounded-full" />*/}
+            {/*<span>{i + 1}</span>*/}
+          </div>
+          {/*<p className="text-xs text-black/50 dark:text-white/50 max-w-md">*/}
+          {/*  {source.pageContent}*/}
+          {/*</p>*/}
         </PopoverPanel>
       </Transition>
     </Popover>

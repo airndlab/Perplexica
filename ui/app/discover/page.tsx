@@ -1,6 +1,6 @@
 'use client';
 
-import { Search } from 'lucide-react';
+import { Search, ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -19,14 +19,20 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/discover.json', {
+        const res = await fetch('https://storage.yandexcloud.net/hacks-ai-storage/discover.json', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
           },
         });
 
-        const data = await res.json();
+        let data = await res.json();
+
+        if (!data.blogs) {
+          data = {
+            blogs: Object.values(data),
+          }
+        }
 
         if (!res.ok) {
           throw new Error(data.message);
@@ -71,7 +77,7 @@ const Page = () => {
         <div className="flex flex-col pt-4">
           <div className="flex items-center">
             <Search />
-            <h1 className="text-3xl font-medium p-2">Discover</h1>
+            <h1 className="text-3xl font-medium p-2">Исследования</h1>
           </div>
           <hr className="border-t border-[#2B2C2C] my-4 w-full" />
         </div>
@@ -80,9 +86,9 @@ const Page = () => {
           {discover &&
             discover?.map((item, i) => (
               <Link
-                href={`/?q=Summary: ${item.url}`}
+                href={`/?q=Саммари: ${item.metadata.file_name ?? item.url}`}
                 key={i}
-                className="max-w-sm rounded-lg overflow-hidden bg-light-secondary dark:bg-dark-secondary hover:-translate-y-[1px] transition duration-200"
+                className="max-w-sm rounded-lg overflow-hidden bg-light-secondary dark:bg-dark-secondary hover:-translate-y-[1px] transition duration-200 relative"
               >
                 <img
                   className="object-cover w-full aspect-video"
@@ -102,6 +108,9 @@ const Page = () => {
                       {item.content.slice(0, 100)}...
                     </p>
                   )}
+                  <a href={item.url} target="_blank" className="absolute bottom-0 right-0 z-10 dark:hover:text-white/70 p-2" onClick={(e) => e.stopPropagation()}>
+                    <ExternalLink />
+                  </a>
                 </div>
               </Link>
             ))}

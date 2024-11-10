@@ -15,13 +15,13 @@ export const formatTimeDifference = (
   );
 
   if (diffInSeconds < 60)
-    return `${diffInSeconds} second${diffInSeconds !== 1 ? 's' : ''}`;
+    return `${diffInSeconds} сек.${diffInSeconds !== 1 ? '' : ''}`;
   else if (diffInSeconds < 3600)
-    return `${Math.floor(diffInSeconds / 60)} minute${Math.floor(diffInSeconds / 60) !== 1 ? 's' : ''}`;
+    return `${Math.floor(diffInSeconds / 60)} мин.${Math.floor(diffInSeconds / 60) !== 1 ? '' : ''}`;
   else if (diffInSeconds < 86400)
-    return `${Math.floor(diffInSeconds / 3600)} hour${Math.floor(diffInSeconds / 3600) !== 1 ? 's' : ''}`;
+    return `${Math.floor(diffInSeconds / 3600)} ч.${Math.floor(diffInSeconds / 3600) !== 1 ? '' : ''}`;
   else if (diffInSeconds < 31536000)
-    return `${Math.floor(diffInSeconds / 86400)} day${Math.floor(diffInSeconds / 86400) !== 1 ? 's' : ''}`;
+    return `${Math.floor(diffInSeconds / 86400)} д.${Math.floor(diffInSeconds / 86400) !== 1 ? '' : ''}`;
   else
-    return `${Math.floor(diffInSeconds / 31536000)} year${Math.floor(diffInSeconds / 31536000) !== 1 ? 's' : ''}`;
+    return `${Math.floor(diffInSeconds / 31536000)} г.${Math.floor(diffInSeconds / 31536000) !== 1 ? '' : ''}`;
 };

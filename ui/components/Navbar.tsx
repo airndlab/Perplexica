@@ -54,7 +54,7 @@ const Navbar = ({
       </a>
       <div className="hidden lg:flex flex-row items-center justify-center space-x-2">
         <Clock size={17} />
-        <p className="text-xs">{timeAgo} ago</p>
+        <p className="text-xs">{timeAgo} назад</p>
       </div>
       <p className="hidden lg:flex">{title}</p>
 

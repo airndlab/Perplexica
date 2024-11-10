@@ -19,8 +19,10 @@ const ThemeSwitcher = ({ className }: { className?: string }) => {
 
   useEffect(() => {
     setMounted(true);
+    setTheme('dark')
   }, []);
 
+/*
   useEffect(() => {
     if (isTheme('system')) {
       const preferDarkScheme = window.matchMedia(
@@ -39,6 +41,7 @@ const ThemeSwitcher = ({ className }: { className?: string }) => {
       };
     }
   }, [isTheme, setTheme, theme]);
+*/
 
   // Avoid Hydration Mismatch
   if (!mounted) {
