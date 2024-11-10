@@ -52,7 +52,10 @@ router.get('/poll', (req, res) => {
   requestData.status = 'processing'
 
   // @ts-ignore
-  res.status(200).json({ requestId, query: requestData.request.query, history: requestData.request.history })
+  res.status(200).json({ requestId, query: requestData.request.query, history: requestData.request.history,
+    // @ts-ignore
+    categories: requestData.request.categories, space: requestData.request.space, filename: requestData.request.filename
+  })
 })
 
 router.post('/complete', async(req, res) => {
