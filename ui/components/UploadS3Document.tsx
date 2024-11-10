@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import AWS from 'aws-sdk';
 import { CopyPlus } from 'lucide-react';
 
-const SettingsDialog = ({ className }) => {
+const SettingsDialog = ({ className }: { className: any }) => {
   // Create state to store file
   // const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
   // Function to upload file to s3
-  const uploadFile = async (file) => {
+  const uploadFile = async (file: any) => {
     setTimeout(() => {
       setLoading(false)
     }, 10000);
@@ -42,14 +42,16 @@ const SettingsDialog = ({ className }) => {
 
     var upload = s3
       .putObject(params)
-      .on("httpUploadProgress", (evt) => {
+      .on("httpUploadProgress", (evt: any) => {
         // File uploading progress
         console.log(
+          // @ts-ignore
           "Uploading " + parseInt((evt.loaded * 100) / evt.total) + "%"
         );
       })
       .promise();
 
+    // @ts-ignore
     await upload.then((err, data) => {
       console.log(err);
       // Fille successfully uploaded
@@ -58,7 +60,7 @@ const SettingsDialog = ({ className }) => {
   };
 
   // Function to handle file and store it to file state
-  const handleFileChange = async (e) => {
+  const handleFileChange = async (e: any) => {
     setLoading(true);
     // Uploaded file
     const file = e.target.files[0];
@@ -74,6 +76,7 @@ const SettingsDialog = ({ className }) => {
   return (
     <>
       <CopyPlus
+        // @ts-ignore
         onClick={() => fileInputRef.current.click()}
         className={className}
       />
