@@ -1,13 +1,10 @@
 import { EventEmitter, WebSocket } from 'ws';
-import { BaseMessage, AIMessage, HumanMessage } from '@langchain/core/messages';
 import handleWebSearch from '../agents/webSearchAgent';
 import handleAcademicSearch from '../agents/academicSearchAgent';
 import handleWritingAssistant from '../agents/writingAssistant';
 import handleWolframAlphaSearch from '../agents/wolframAlphaSearchAgent';
 import handleYoutubeSearch from '../agents/youtubeSearchAgent';
 import handleRedditSearch from '../agents/redditSearchAgent';
-import type { BaseChatModel } from '@langchain/core/language_models/chat_models';
-import type { Embeddings } from '@langchain/core/embeddings';
 import logger from '../utils/logger';
 import db from '../db';
 import { chats, messages as messagesSchema } from '../db/schema';
@@ -23,6 +20,9 @@ type Message = {
 };
 
 type WSMessage = {
+  category: string;
+  space: string;
+  filename: string;
   message: Message;
   optimizationMode: string;
   type: string;
@@ -114,7 +114,10 @@ export const handleMessage = async (
       const emitter = createSearchEmitter(
         requestId,
         parsedMessage.content,
-        parsedWSMessage.history
+        parsedWSMessage.history,
+        parsedWSMessage.category,
+        parsedWSMessage.space,
+        parsedWSMessage.filename,
       );
 
       handleEmitterEvents(emitter, ws, aiMessageId, parsedMessage.chatId);

@@ -29,7 +29,10 @@ router.post('/', async (req, res) => {
     const emitter = createSearchEmitter(
       requestId,
       '',
-      chatHistory
+      chatHistory,
+      '',
+      '',
+      ''
     );
 
     emitter.on('end', (data) => {
