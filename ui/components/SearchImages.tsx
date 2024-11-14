@@ -101,7 +101,7 @@ const SearchImages = ({
         >
           <div className="flex flex-row items-center space-x-2">
             <ImagesIcon size={17} />
-            <p>Показать изображения</p>
+            <p>Изображения</p>
           </div>
           <PlusIcon className="text-[#24A0ED]" size={17} />
         </button>
