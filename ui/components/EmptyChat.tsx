@@ -45,7 +45,7 @@ const EmptyChat = ({
         {/*/>*/}
       </div>
       <div className="flex flex-col items-center min-h-screen max-w-screen-sm mx-auto p-2 space-y-8">
-        <Image width={300} height={300} src="/mascot.png" alt="mascot" className="mt-10" />
+        <Image width={250} height={250} src="/mascot.png" alt="mascot" className="mt-10" />
         <h2 className="text-black/70 dark:text-white/70 text-3xl font-medium -mt-8">
           Поиск начинается здесь.
         </h2>
