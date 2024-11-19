@@ -1,12 +1,13 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { BookOpenText, SquarePen, CopyPlus, Settings, Aperture } from 'lucide-react';
+import { BookOpenText, Home, Search, SquarePen, CopyPlus, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import React, { useState, type ReactNode } from 'react';
 import Layout from './Layout';
-import MockDialog from './MockDialog';
+import SettingsDialog from './SettingsDialog';
+import UploadS3Document from '@/components/UploadS3Document';
 
 const VerticalIconContainer = ({ children }: { children: ReactNode }) => {
   return (
@@ -17,21 +18,26 @@ const VerticalIconContainer = ({ children }: { children: ReactNode }) => {
 const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const segments = useSelectedLayoutSegments();
 
-  // const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [isMockDialogOpen, setIsMockDialogOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   const navLinks = [
     {
-      icon: SquarePen,
+      icon: Home,
       href: '/',
       active: segments.length === 0 || segments.includes('c'),
-      label: 'Чат',
+      label: 'Home',
+    },
+    {
+      icon: Search,
+      href: '/discover',
+      active: segments.includes('discover'),
+      label: 'Discover',
     },
     {
       icon: BookOpenText,
       href: '/library',
       active: segments.includes('library'),
-      label: 'История',
+      label: 'Library',
     },
   ];
 
@@ -39,9 +45,9 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
     <div>
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-20 lg:flex-col">
         <div className="flex grow flex-col items-center justify-between gap-y-5 overflow-y-auto bg-light-secondary dark:bg-dark-secondary px-2 py-8">
-          <Link href="/discover">
-            <Aperture className="cursor-pointer" />
-          </Link>
+          <a href="/">
+            <SquarePen className="cursor-pointer" />
+          </a>
           <VerticalIconContainer>
             {navLinks.map((link, i) => (
               <Link
@@ -63,20 +69,17 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
           </VerticalIconContainer>
 
           <div>
+
             <a href="http://158.160.68.33:3003/public/dashboard/57e69abe-defb-4f43-acc7-55bfb97ee071#theme=night"
                target="_blank"
             >
               <Settings
-                // onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+                onClick={() => setIsSettingsOpen(!isSettingsOpen)}
                 className="cursor-pointer"
               />
             </a>
 
-            <CopyPlus
-              onClick={() => setIsMockDialogOpen((prevState) => !prevState)}
-              className="cursor-pointer mt-[30px]"
-            />
-            {/*<UploadS3Document className="cursor-pointer mt-[30px]" />*/}
+            <UploadS3Document className="cursor-pointer mt-[30px]" />
           </div>
 
 
@@ -89,10 +92,6 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
           {/*  isOpen={isSettingsOpen}*/}
           {/*  setIsOpen={setIsSettingsOpen}*/}
           {/*/>*/}
-          <MockDialog
-            isOpen={isMockDialogOpen}
-            setIsOpen={setIsMockDialogOpen}
-          />
         </div>
       </div>
 

@@ -68,7 +68,7 @@ const Page = () => {
       {chats.length === 0 && (
         <div className="flex flex-row items-center justify-center min-h-screen">
           <p className="text-black/70 dark:text-white/70 text-sm">
-            Чаты не найдены.
+            No chats found.
           </p>
         </div>
       )}
