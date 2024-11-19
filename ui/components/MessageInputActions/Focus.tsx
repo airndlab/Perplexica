@@ -16,9 +16,9 @@ import {
 import { SiReddit, SiYoutube } from '@icons-pack/react-simple-icons';
 import { Fragment } from 'react';
 
-export const focusModes = [
+const focusModes = [
   {
-    key: 'presentations',
+    key: 'media',
     title: 'Маркетинговые материалы',
     description: 'Исследованиях, анализ рынков, презентации и конкурсные документы.',
     icon: <Globe size={20} />,

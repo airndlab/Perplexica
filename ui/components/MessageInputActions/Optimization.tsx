@@ -16,7 +16,7 @@ import {
 } from '@headlessui/react';
 import { Fragment } from 'react';
 
-export const OptimizationModes = [
+const OptimizationModes = [
   {
     key: '',
     title: 'Все категории',

@@ -17,7 +17,7 @@ import {
 import Markdown from 'markdown-to-jsx';
 import Copy from './MessageActions/Copy';
 import Rewrite from './MessageActions/Rewrite';
-import MessageSources, { CustomSource } from './MessageSources';
+import MessageSources from './MessageSources';
 import SearchImages from './SearchImages';
 import SearchVideos from './SearchVideos';
 import { useSpeech } from 'react-text-to-speech';
@@ -238,7 +238,7 @@ const TooltipLink = ({ href, children, className, sources }: {
   sources: Document[];
 }) => {
   const [isHoverDialogOpen, setIsHoverDialogOpen] = useState(false);
-  const source = sources[parseInt(children[0]) - 1]; // todo: need data attribute
+  const source = sources[parseInt(children[0]) - 1]; // todo: data attribute is required
 
   const closeHoverModal = () => {
     setIsHoverDialogOpen(false);
@@ -260,7 +260,62 @@ const TooltipLink = ({ href, children, className, sources }: {
           {children}
         </a>
       </PopoverButton>
-      <CustomSource isHoverDialogOpen={isHoverDialogOpen} source={source} />
+      <Transition // todo: common block with MessageSources
+        as={Fragment}
+        enter="transition ease-out duration-150"
+        enterFrom="opacity-0 translate-y-1"
+        enterTo="opacity-100 translate-y-0"
+        leave="transition ease-in duration-150"
+        leaveFrom="opacity-100 translate-y-0"
+        leaveTo="opacity-0 translate-y-1"
+        show={isHoverDialogOpen}
+      >
+        <PopoverPanel
+          anchor="bottom"
+          static
+          className="rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 px-6 py-3 text-left align-middle shadow-xl flex font-medium"
+        >
+          {/*<div className="flex flex-row items-center space-x-1">*/}
+          {/*<img*/}
+          {/*  src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${source.metadata.url}`}*/}
+          {/*  width={16}*/}
+          {/*  height={16}*/}
+          {/*  alt="favicon"*/}
+          {/*  className="rounded-lg h-4 w-4"*/}
+          {/*/>*/}
+          {/*<p className="text-xs text-black/50 dark:text-white/50 overflow-hidden whitespace-nowrap text-ellipsis">*/}
+          {/*  {source.metadata.url.replace(/.+\/\/|www.|\..+/g, '')}*/}
+          {/*</p>*/}
+          {/*</div>*/}
+          <img
+            className="object-contain"
+            width={70}
+            height={70}
+            src={source.metadata.thumbnail}
+            alt=""
+          />
+          <a
+            className="max-w-[300px] ml-2 text-black dark:text-white text-sm overflow-hidden transition duration-200 hover:text-[#24A0ED] dark:hover:text-[#24A0ED] cursor-pointer"
+            href={source.metadata.url}
+            target="_blank"
+          >
+            {source.metadata.title}
+          </a>
+          <div className="flex flex-row items-center space-x-1 text-black/50 dark:text-white/50 text-xs absolute right-[7px] bottom-[7px]">
+            <Link
+              href={`/?q=Сводка: ${source.metadata.file_name}`}
+              className="cursor-pointer hover:text-white transition duration-200"
+            >
+              <File width={15} height={15} className="" />
+            </Link>
+            {/*<div className="bg-black/50 dark:bg-white/50 h-[4px] w-[4px] rounded-full" />*/}
+            {/*<span>{i + 1}</span>*/}
+          </div>
+          {/*<p className="text-xs text-black/50 dark:text-white/50 max-w-md">*/}
+          {/*  {source.pageContent}*/}
+          {/*</p>*/}
+        </PopoverPanel>
+      </Transition>
     </Popover>
   );
 };
