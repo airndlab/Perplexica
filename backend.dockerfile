@@ -10,7 +10,7 @@ COPY yarn.lock /home/perplexica/
 
 RUN mkdir /home/perplexica/data
 
-RUN yarn install --no-lockfile --network-timeout 600000
+RUN yarn install --frozen-lockfile --network-timeout 600000
 RUN yarn build
 
 CMD ["yarn", "start"]
