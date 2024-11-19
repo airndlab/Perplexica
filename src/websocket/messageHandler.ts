@@ -134,9 +134,6 @@ export const handleMessage = async (
             title: parsedMessage.content,
             createdAt: new Date().toString(),
             focusMode: parsedWSMessage.focusMode,
-            category: parsedWSMessage.category,
-            space: parsedWSMessage.space,
-            filename: parsedWSMessage.filename,
           })
           .execute();
       }
