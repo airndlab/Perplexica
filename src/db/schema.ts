@@ -16,4 +16,7 @@ export const chats = sqliteTable('chats', {
   title: text('title').notNull(),
   createdAt: text('createdAt').notNull(),
   focusMode: text('focusMode').notNull(),
+  category: text('category').notNull(),
+  space: text('space').notNull(),
+  filename: text('filename').notNull(),
 });

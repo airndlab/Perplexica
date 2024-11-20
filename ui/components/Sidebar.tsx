@@ -1,13 +1,12 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { BookOpenText, Home, Search, SquarePen, CopyPlus, Settings } from 'lucide-react';
+import { BookOpenText, SquarePen, CopyPlus, Settings, Aperture } from 'lucide-react';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import React, { useState, type ReactNode } from 'react';
 import Layout from './Layout';
-import SettingsDialog from './SettingsDialog';
-import UploadS3Document from '@/components/UploadS3Document';
+import MockDialog from './MockDialog';
 
 const VerticalIconContainer = ({ children }: { children: ReactNode }) => {
   return (
@@ -18,26 +17,21 @@ const VerticalIconContainer = ({ children }: { children: ReactNode }) => {
 const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const segments = useSelectedLayoutSegments();
 
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  // const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isMockDialogOpen, setIsMockDialogOpen] = useState(false);
 
   const navLinks = [
     {
-      icon: Home,
+      icon: SquarePen,
       href: '/',
       active: segments.length === 0 || segments.includes('c'),
-      label: 'Home',
-    },
-    {
-      icon: Search,
-      href: '/discover',
-      active: segments.includes('discover'),
-      label: 'Discover',
+      label: 'Чат',
     },
     {
       icon: BookOpenText,
       href: '/library',
       active: segments.includes('library'),
-      label: 'Library',
+      label: 'История',
     },
   ];
 
@@ -45,9 +39,9 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
     <div>
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-20 lg:flex-col">
         <div className="flex grow flex-col items-center justify-between gap-y-5 overflow-y-auto bg-light-secondary dark:bg-dark-secondary px-2 py-8">
-          <a href="/">
-            <SquarePen className="cursor-pointer" />
-          </a>
+          <Link href="/discover">
+            <Aperture className="cursor-pointer" />
+          </Link>
           <VerticalIconContainer>
             {navLinks.map((link, i) => (
               <Link
@@ -69,17 +63,20 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
           </VerticalIconContainer>
 
           <div>
-
             <a href="http://158.160.68.33:3003/public/dashboard/57e69abe-defb-4f43-acc7-55bfb97ee071#theme=night"
                target="_blank"
             >
               <Settings
-                onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+                // onClick={() => setIsSettingsOpen(!isSettingsOpen)}
                 className="cursor-pointer"
               />
             </a>
 
-            <UploadS3Document className="cursor-pointer mt-[30px]" />
+            <CopyPlus
+              onClick={() => setIsMockDialogOpen((prevState) => !prevState)}
+              className="cursor-pointer mt-[30px]"
+            />
+            {/*<UploadS3Document className="cursor-pointer mt-[30px]" />*/}
           </div>
 
 
@@ -92,28 +89,36 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
           {/*  isOpen={isSettingsOpen}*/}
           {/*  setIsOpen={setIsSettingsOpen}*/}
           {/*/>*/}
+          <MockDialog
+            isOpen={isMockDialogOpen}
+            setIsOpen={setIsMockDialogOpen}
+          />
         </div>
       </div>
 
       <div className="fixed bottom-0 w-full z-50 flex flex-row items-center gap-x-6 bg-light-primary dark:bg-dark-primary px-4 py-4 shadow-sm lg:hidden">
-        {navLinks.map((link, i) => (
-          <Link
-            href={link.href}
-            key={i}
-            className={cn(
-              'relative flex flex-col items-center space-y-1 text-center w-full',
-              link.active
-                ? 'text-black dark:text-white'
-                : 'text-black dark:text-white/70',
-            )}
-          >
-            {link.active && (
-              <div className="absolute top-0 -mt-4 h-1 w-full rounded-b-lg bg-black dark:bg-white" />
-            )}
-            <link.icon />
-            <p className="text-xs">{link.label}</p>
-          </Link>
-        ))}
+        {navLinks.map((link, i) => {
+          const CurrentLink = link.href === '/' ? 'a' : Link;
+
+          return (
+            <CurrentLink
+              href={link.href}
+              key={i}
+              className={cn(
+                'relative flex flex-col items-center space-y-1 text-center w-full',
+                link.active
+                  ? 'text-black dark:text-white'
+                  : 'text-black dark:text-white/70',
+              )}
+            >
+              {link.active && (
+                <div className="absolute top-0 -mt-4 h-1 w-full rounded-b-lg bg-black dark:bg-white" />
+              )}
+              <link.icon />
+              <p className="text-xs">{link.label}</p>
+            </CurrentLink>
+          )
+        })}
       </div>
 
       <Layout>{children}</Layout>
