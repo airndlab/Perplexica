@@ -14,9 +14,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'Airnd - Чат с интернетом',
+  title: 'Perplexica - Chat with the internet',
   description:
-    'Airnd - это чатбот с искусственным интеллектом, подключенный к интернету.',
+    'Perplexica is an AI powered chatbot that is connected to the internet.',
 };
 
 export default function RootLayout({

@@ -105,7 +105,7 @@ const Page = () => {
                   </div>
                   {item.content && (
                     <p className="text-black-70 dark:text-white/70 text-sm">
-                      {item.content.slice(0, 100)}{item.content.length > 100 ? '...' : ''}
+                      {item.content.slice(0, 100)}...
                     </p>
                   )}
                   <a href={item.url} target="_blank" className="absolute bottom-0 right-0 z-10 dark:hover:text-white/70 p-2" onClick={(e) => e.stopPropagation()}>

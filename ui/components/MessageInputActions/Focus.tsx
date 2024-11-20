@@ -16,9 +16,9 @@ import {
 import { SiReddit, SiYoutube } from '@icons-pack/react-simple-icons';
 import { Fragment } from 'react';
 
-export const focusModes = [
+const focusModes = [
   {
-    key: 'presentations',
+    key: 'media',
     title: 'Маркетинговые материалы',
     description: 'Исследованиях, анализ рынков, презентации и конкурсные документы.',
     icon: <Globe size={20} />,
@@ -71,8 +71,8 @@ const Focus = ({
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <PopoverPanel anchor="bottom start" className="md:!max-w-[600px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 bg-light-primary dark:bg-dark-primary border rounded-lg border-light-200 dark:border-dark-200 p-4">
+        <PopoverPanel className="absolute z-10 w-64 md:w-[500px] left-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 bg-light-primary dark:bg-dark-primary border rounded-lg border-light-200 dark:border-dark-200 w-full p-4 max-h-[200px] md:max-h-none overflow-y-auto">
             {focusModes.map((mode, i) => (
               <PopoverButton
                 onClick={() => setFocusMode(mode.key)}
@@ -86,7 +86,7 @@ const Focus = ({
               >
                 <div
                   className={cn(
-                    'flex flex-row items-center space-x-2',
+                    'flex flex-row items-center space-x-1',
                     focusMode === mode.key
                       ? 'text-[#24A0ED]'
                       : 'text-black dark:text-white',
