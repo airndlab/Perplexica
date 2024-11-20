@@ -30,7 +30,7 @@ const Page = () => {
 
       const data = await res.json();
 
-      setChats(data.chats);
+      setChats(data.chats ?? []);
       setLoading(false);
     };
 

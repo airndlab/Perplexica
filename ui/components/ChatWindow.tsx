@@ -359,7 +359,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
     messageId = messageId ?? crypto.randomBytes(7).toString('hex');
 
     const currentFileName= filename
-    ?? (message.startsWith("Сводка:") ? message.substring(message.indexOf(":") + 2) : undefined);
+    ?? (message.startsWith("Сводка:") ? message.substring(message.indexOf(":") + 2) : '');
 
     setFilename(currentFileName);
 

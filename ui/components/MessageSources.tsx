@@ -137,12 +137,12 @@ const FullTileContent = ({ source, idx }: { source: Document, idx?: number }) =>
           src={source.metadata.thumbnail}
           alt=""
         />
-        <div className="ml-2">
+        <div className="ml-2 space-y-2">
           <p className="dark:text-white text-xs">
             {source.metadata.title.slice(0, 100)}{source.metadata.title.length > 100 ? '...' : ''}
           </p>
           <p className="text-xs text-black/50 dark:text-white/50 max-w-md">
-            {source?.metadata?.snippet?.slice(0, 100)}{source?.metadata?.snippet?.length > 100 ? '...' : ''}
+            {source?.pageContent?.slice(0, 100)}{source?.pageContent?.length > 100 ? '...' : ''}
           </p>
         </div>
       </div>
@@ -187,10 +187,10 @@ export const CustomSource = ({ isHoverDialogOpen, source, isCurrentItem = true }
       <PopoverPanel
         anchor="bottom"
         static
-        className="rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 px-6 py-3 text-left align-middle shadow-xl flex font-medium"
+        className="z-50 rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 px-6 py-3 text-left align-middle shadow-xl flex font-medium"
       >
         <a
-          className="max-w-[300px] min-w-[230px]"
+          className="max-w-[300px] min-w-[230px] space-y-2"
           href={source.metadata.url}
           target="_blank"
         >
