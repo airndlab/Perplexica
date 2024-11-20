@@ -126,8 +126,8 @@ const Optimization = ({
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <PopoverPanel className="absolute z-10 w-64 md:w-[250px] right-0">
-          <div className="flex flex-col gap-2 bg-light-primary dark:bg-dark-primary border rounded-lg border-light-200 dark:border-dark-200 w-full p-4 max-h-[200px] md:max-h-none overflow-y-auto">
+        <PopoverPanel anchor="bottom end" className="md:!max-w-[600px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 bg-light-primary dark:bg-dark-primary border rounded-lg border-light-200 dark:border-dark-200 p-4">
             {OptimizationModes.map((mode, i) => (
               <PopoverButton
                 onClick={() => setOptimizationMode(mode.key)}
