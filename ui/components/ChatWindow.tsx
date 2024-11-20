@@ -218,6 +218,8 @@ const loadMessages = async (
   setFocusMode: (mode: string) => void,
   setNotFound: (notFound: boolean) => void,
   messagesRef: any,
+  setOptimizationMode: (mode: string) => void,
+  setFilename: (filename: string) => void,
 ) => {
   const res = await fetch(
     `http://158.160.68.33:3001/api/chats/${chatId}`,
@@ -259,7 +261,9 @@ const loadMessages = async (
   document.title = messages[0].content;
 
   setChatHistory(history);
-  setFocusMode(data.chat.focusMode);
+  setFocusMode(data.chat.space);
+  setOptimizationMode(data.chat.category);
+  setFilename(data.chat.filename);
   setIsMessagesLoaded(true);
 };
 
@@ -286,8 +290,9 @@ const ChatWindow = ({ id }: { id?: string }) => {
   const [chatHistory, setChatHistory] = useState<[string, string][]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
 
-  const [focusMode, setFocusMode] = useState('media');
+  const [focusMode, setFocusMode] = useState('presentations');
   const [optimizationMode, setOptimizationMode] = useState('');
+  const [filename, setFilename] = useState<string | undefined>();
 
   const [isMessagesLoaded, setIsMessagesLoaded] = useState(false);
 
@@ -308,6 +313,8 @@ const ChatWindow = ({ id }: { id?: string }) => {
         setFocusMode,
         setNotFound,
         messagesRef,
+        setOptimizationMode,
+        setFilename,
       );
     } else if (!chatId) {
       setNewChatCreated(true);
@@ -351,6 +358,11 @@ const ChatWindow = ({ id }: { id?: string }) => {
 
     messageId = messageId ?? crypto.randomBytes(7).toString('hex');
 
+    const currentFileName= filename
+    ?? (message.startsWith("Сводка:") ? message.substring(message.indexOf(":") + 2) : undefined);
+
+    setFilename(currentFileName);
+
     ws?.send(
       JSON.stringify({
         type: 'message',
@@ -361,7 +373,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
         },
         space: focusMode,
         category: optimizationMode,
-        filename: message.startsWith("Сводка:") ? message.substring(message.indexOf(":") + 2) : undefined,
+        filename: currentFileName,
         focusMode: 'webSearch',
         optimizationMode: 'speed',
         history: [...chatHistory, ['human', message]],
@@ -499,7 +511,12 @@ const ChatWindow = ({ id }: { id?: string }) => {
       <div>
         {messages.length > 0 ? (
           <>
-            <Navbar chatId={chatId!} messages={messages} />
+            <Navbar
+              chatId={chatId!}
+              messages={messages}
+              focusMode={focusMode}
+              optimizationMode={optimizationMode}
+            />
             <Chat
               loading={loading}
               messages={messages}

@@ -1,36 +1,38 @@
 import { Clock, Edit, Share } from 'lucide-react';
 import { Message } from './ChatWindow';
-import { ElementType, Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState, ReactNode } from 'react';
 import { formatTimeDifference } from '@/lib/utils';
 import DeleteChat from './DeleteChat';
 import { Popover, PopoverButton, PopoverGroup, PopoverPanel, Transition } from '@headlessui/react';
 import _ from 'lodash';
-
-interface ITag {
-  title: string;
-  Icon: ElementType;
-}
-
-const TAGS: ITag[] = [
-  {
-    title: 'Транспорт',
-    Icon: Clock,
-  },
-  {
-    title: 'Маркетиноговые исследования',
-    Icon: Edit,
-  },
-]
+import { focusModes } from '@/components/MessageInputActions/Focus';
+import { OptimizationModes } from '@/components/MessageInputActions/Optimization';
 
 const Navbar = ({
   chatId,
   messages,
+  focusMode,
+  optimizationMode,
 }: {
   messages: Message[];
   chatId: string;
+  focusMode: string;
+  optimizationMode: string;
 }) => {
   const [title, setTitle] = useState<string>('');
   const [timeAgo, setTimeAgo] = useState<string>('');
+
+  const tags = useMemo((): ITag[] => {
+    const currentFocusMode = _.find(focusModes, ['key', focusMode]);
+    const currentOptimizationMode = _.find(OptimizationModes, ['key', optimizationMode]);
+    if (currentFocusMode && currentOptimizationMode) {
+      return [
+        currentFocusMode,
+        currentOptimizationMode
+      ];
+    }
+    return [];
+  }, [focusMode, optimizationMode]);
 
   useEffect(() => {
     if (messages.length > 0) {
@@ -74,12 +76,14 @@ const Navbar = ({
         <Clock size={17} />
         <p className="text-xs">{timeAgo} назад</p>
       </div>
-      <div className="flex items-center">
-        <PopoverGroup className="flex pr-2">
-          {_.map(TAGS, (tag, idx) => (
-            <PopoverTags key={idx} tag={tag} />
-          ))}
-        </PopoverGroup>
+      <div className="flex items-center space-x-2">
+        {!_.isEmpty(tags) && (
+          <PopoverGroup className="flex space-x-2">
+            {_.map(tags, (tag, idx) => (
+              <PopoverTags key={idx} tag={tag} />
+            ))}
+          </PopoverGroup>
+        )}
         <p className="hidden lg:flex">{title}</p>
       </div>
       <div className="flex flex-row items-center space-x-4">
@@ -93,8 +97,13 @@ const Navbar = ({
   );
 };
 
+interface ITag {
+  title: string;
+  description: string;
+  icon: ReactNode;
+}
+
 const PopoverTags = ({ tag }: { tag: ITag }) => {
-  const { title, Icon } = tag;
   const [open, setOpen] = useState(false);
 
   return (
@@ -106,7 +115,7 @@ const PopoverTags = ({ tag }: { tag: ITag }) => {
         as="p"
         className="cursor-pointer p-2 rounded-xl bg-light-secondary dark:bg-dark-secondary text-black dark:text-white"
       >
-        <Icon size={17} />
+        {tag.icon}
       </PopoverButton>
       <Transition
         as={Fragment}
@@ -121,9 +130,17 @@ const PopoverTags = ({ tag }: { tag: ITag }) => {
         <PopoverPanel
           anchor="bottom"
           static
-          className="z-40 rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 px-6 py-3 text-left align-middle shadow-xl flex font-medium"
+          className="z-40 !max-w-[300px] p-2 rounded-lg flex flex-col items-start justify-start text-start space-y-2 duration-200 transition bg-light-secondary dark:bg-dark-secondary"
         >
-          {title}
+            <div
+              className="flex flex-row items-center space-x-2 text-[#24A0ED]"
+            >
+              {tag.icon}
+              <p className="text-sm font-medium">{tag.title}</p>
+            </div>
+            <p className="text-black/70 dark:text-white/70 text-xs">
+              {tag.description}
+            </p>
         </PopoverPanel>
       </Transition>
     </Popover>
