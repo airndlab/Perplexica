@@ -1,7 +1,7 @@
 'use client';
 
 /* eslint-disable @next/next/no-img-element */
-import React, { Fragment, MutableRefObject, useEffect, useState } from 'react';
+import React, { MutableRefObject, useEffect, useState } from 'react';
 import { Message } from './ChatWindow';
 import { cn } from '@/lib/utils';
 import {
@@ -12,18 +12,23 @@ import {
   Layers3,
   Plus,
   ThumbsDown,
-  ThumbsUp, File,
+  ThumbsUp,
+  File,
+  ExternalLink,
 } from 'lucide-react';
 import Markdown from 'markdown-to-jsx';
 import Copy from './MessageActions/Copy';
 import Rewrite from './MessageActions/Rewrite';
-import MessageSources, { CustomSource } from './MessageSources';
+import MessageSources from './MessageSources';
 import SearchImages from './SearchImages';
 import SearchVideos from './SearchVideos';
 import { useSpeech } from 'react-text-to-speech';
-import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
 import { Document } from '@langchain/core/documents';
-import Link from 'next/link';
+import { fetchDataDiscover, getCurrentDiscover } from '@/components/utils';
+import { toast } from 'sonner';
+import { Discover } from '@/app/discover/page';
+import Tooltip from '@/components/Tooltip';
+import FullTileContent from '@/components/FullTileContent';
 
 const MessageBox = ({
   message,
@@ -47,6 +52,7 @@ const MessageBox = ({
   const [parsedMessage, setParsedMessage] = useState(message.content);
   const [speechMessage, setSpeechMessage] = useState(message.content);
   const [feedback, setFeedback] = useState('');
+  const [discover, setDiscover] = useState<Discover | undefined>();
 
   useEffect(() => {
     const regex = /\[(\d+)\]/g;
@@ -69,6 +75,17 @@ const MessageBox = ({
     setParsedMessage(message.content);
   }, [message.content, message.sources, message.role]);
 
+  useEffect(() => {
+    fetchDataDiscover()
+      .then((blogs) => {
+        setDiscover(getCurrentDiscover(message.content, blogs));
+      })
+      .catch((err: any) => {
+        console.error('Ошибка при получении данных:', err.message);
+        toast.error('Ошибка при получении данных');
+      });
+  }, [message.content]);
+
   const { speechStatus, start, stop } = useSpeech({ text: speechMessage });
 
   return (
@@ -77,6 +94,15 @@ const MessageBox = ({
         <div className={cn('w-full', messageIndex === 0 ? 'pt-16' : 'pt-8')}>
           <h2 className="text-black dark:text-white font-medium text-3xl lg:w-9/12">
             {message.content}
+            {' '}
+            {discover && (
+              <a
+                href={discover?.url}
+                target="_blank"
+              >
+                <ExternalLink className="inline" />
+              </a>
+            )}
           </h2>
         </div>
       )}
@@ -232,36 +258,35 @@ const MessageBox = ({
 };
 
 const TooltipLink = ({ href, children, className, sources }: {
-  href: string,
   children: string;
-  className: string;
   sources: Document[];
+  href?: string,
+  className?: string;
 }) => {
-  const [isHoverDialogOpen, setIsHoverDialogOpen] = useState(false);
-  const source = sources[parseInt(children[0]) - 1]; // todo: need data attribute
-
-  const closeHoverModal = () => {
-    setIsHoverDialogOpen(false);
-  };
-
-  const openHoverModal = () => {
-    setIsHoverDialogOpen(true);
-  };
+  const source = sources?.[parseInt(children[0]) - 1]; // todo: need data attribute
 
   return (
-    <Popover className="inline" onMouseEnter={openHoverModal} onMouseLeave={closeHoverModal}>
-      <PopoverButton as="span">
+    <Tooltip
+      inline
+      title={
         <a
-          className={className}
-          href={href}
+          className="max-w-[300px] min-w-[230px] space-y-2"
+          href={source?.metadata?.url}
           target="_blank"
-          rel="noopener noreferrer"
         >
-          {children}
+          <FullTileContent source={source} />
         </a>
-      </PopoverButton>
-      <CustomSource isHoverDialogOpen={isHoverDialogOpen} source={source} />
-    </Popover>
+      }
+    >
+      <a
+        className={className}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    </Tooltip>
   );
 };
 

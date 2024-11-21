@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { Message } from './ChatWindow';
+import { toast } from 'sonner';
+import { Discover } from '@/app/discover/page';
+import { fetchDataDiscover, getCurrentDiscover } from '@/components/utils';
 
 type Image = {
   url: string;
@@ -30,6 +33,7 @@ const SearchImages = ({
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [slides, setSlides] = useState<any[]>([]);
+  const [discover, setDiscover] = useState<Discover | undefined>();
 
   // useEffect(() => {
   //   setSlides(
@@ -41,8 +45,48 @@ const SearchImages = ({
   //   );
   // }, [])
 
+  useEffect(() => {
+    const images = discover?.thumbnail
+      ? [{
+        img_src: discover?.thumbnail,
+        title: discover?.title,
+      }]
+      : sources
+        ? sources.map((item: any) => {
+          return {
+            img_src: item?.metadata?.thumbnail,
+            title: item?.metadata?.file_title,
+          }
+        })
+        : null;
+
+    setImages(images);
+    setSlides(
+      images ? images.map((image: Image) => {
+        return {
+          src: image.img_src,
+        };
+      }) : [],
+    );
+  }, [sources, discover]);
+
+  useEffect(() => {
+    fetchDataDiscover()
+      .then((blogs) => {
+        setDiscover(getCurrentDiscover(query, blogs));
+      })
+      .catch((err: any) => {
+        console.error('Ошибка при получении данных:', err.message);
+        toast.error('Ошибка при получении данных');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [query]);
+
   return (
     <>
+{/*
       {!loading && images === null && (
         <button
           onClick={async () => {
@@ -106,6 +150,7 @@ const SearchImages = ({
           <PlusIcon className="text-[#24A0ED]" size={17} />
         </button>
       )}
+*/}
       {loading && (
         <div className="grid grid-cols-2 gap-2">
           {[...Array(4)].map((_, i) => (

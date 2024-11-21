@@ -11,14 +11,17 @@ const EmptyChatMessageInput = ({
   setFocusMode,
   optimizationMode,
   setOptimizationMode,
+  vlmEnabled,
+  setVlmEnabled,
 }: {
   sendMessage: (message: string) => void;
   focusMode: string;
   setFocusMode: (mode: string) => void;
   optimizationMode: string;
   setOptimizationMode: (mode: string) => void;
+  vlmEnabled: boolean;
+  setVlmEnabled: (vlmEnabled: boolean) => void;
 }) => {
-  const [copilotEnabled, setCopilotEnabled] = useState(false);
   const [message, setMessage] = useState('');
 
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
@@ -70,14 +73,18 @@ const EmptyChatMessageInput = ({
           className="bg-transparent placeholder:text-black/50 dark:placeholder:text-white/50 text-sm text-black dark:text-white resize-none focus:outline-none w-full max-h-24 lg:max-h-36 xl:max-h-48"
           placeholder="Спросите что-нибудь..."
         />
-        <div className="flex flex-row items-center justify-between mt-4">
-          <div className="flex flex-row items-center space-x-4">
+        <div className="flex sm:flex-row sm:items-center flex-col-reverse items-end mt-4">
+          <div className="flex flex-row items-center grow space-x-4">
             <Focus focusMode={focusMode} setFocusMode={setFocusMode} />
-          </div>
-          <div className="flex flex-row items-center space-x-1 sm:space-x-4">
             <Optimization
               optimizationMode={optimizationMode}
               setOptimizationMode={setOptimizationMode}
+            />
+          </div>
+          <div className="flex flex-row items-center space-x-4">
+            <CopilotToggle
+              copilotEnabled={vlmEnabled}
+              setCopilotEnabled={setVlmEnabled}
             />
             <button
               disabled={message.trim().length === 0}

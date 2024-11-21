@@ -10,12 +10,16 @@ const EmptyChat = ({
   setFocusMode,
   optimizationMode,
   setOptimizationMode,
+  vlmEnabled,
+  setVlmEnabled,
 }: {
   sendMessage: (message: string) => void;
   focusMode: string;
   setFocusMode: (mode: string) => void;
   optimizationMode: string;
   setOptimizationMode: (mode: string) => void;
+  vlmEnabled: boolean;
+  setVlmEnabled: (vlmEnable: boolean) => void;
 }) => {
   // const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isMockDialogOpen, setIsMockDialogOpen] = useState(false);
@@ -55,6 +59,8 @@ const EmptyChat = ({
           setFocusMode={setFocusMode}
           optimizationMode={optimizationMode}
           setOptimizationMode={setOptimizationMode}
+          vlmEnabled={vlmEnabled}
+          setVlmEnabled={setVlmEnabled}
         />
         <p
           // className="text-xs font-medium text-black dark:text-white !mt-2 self-end"

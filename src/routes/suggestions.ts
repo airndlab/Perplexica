@@ -32,7 +32,8 @@ router.post('/', async (req, res) => {
       chatHistory,
       '',
       '',
-      ''
+      '',
+      '',
     );
 
     emitter.on('end', (data) => {

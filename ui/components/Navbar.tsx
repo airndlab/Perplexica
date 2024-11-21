@@ -77,7 +77,7 @@ const Navbar = ({
         <p className="text-xs">{timeAgo} назад</p>
       </div>
       <div className="flex items-center space-x-2">
-        {!_.isEmpty(tags) && (
+        {!_.isEmpty(tags) && !_.startsWith(title, 'Сводка:') && (
           <PopoverGroup className="flex space-x-2">
             {_.map(tags, (tag, idx) => (
               <PopoverTags key={idx} tag={tag} />

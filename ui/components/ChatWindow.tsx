@@ -220,6 +220,7 @@ const loadMessages = async (
   messagesRef: any,
   setOptimizationMode: (mode: string) => void,
   setFilename: (filename: string) => void,
+  setVlmEnabled: (vlmEnabled: boolean) => void,
 ) => {
   const res = await fetch(
     `http://158.160.68.33:3001/api/chats/${chatId}`,
@@ -264,6 +265,7 @@ const loadMessages = async (
   setFocusMode(data.chat.space);
   setOptimizationMode(data.chat.category);
   setFilename(data.chat.filename);
+  setVlmEnabled(data.chat.pipelineType === 'vlm');
   setIsMessagesLoaded(true);
 };
 
@@ -293,6 +295,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
   const [focusMode, setFocusMode] = useState('presentations');
   const [optimizationMode, setOptimizationMode] = useState('');
   const [filename, setFilename] = useState<string | undefined>();
+  const [vlmEnabled, setVlmEnabled] = useState(false);
 
   const [isMessagesLoaded, setIsMessagesLoaded] = useState(false);
 
@@ -315,6 +318,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
         messagesRef,
         setOptimizationMode,
         setFilename,
+        setVlmEnabled,
       );
     } else if (!chatId) {
       setNewChatCreated(true);
@@ -376,6 +380,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
         filename: currentFileName,
         focusMode: 'webSearch',
         optimizationMode: 'speed',
+        pipelineType: vlmEnabled ? 'vlm' : 'haystack',
         history: [...chatHistory, ['human', message]],
       }),
     );
@@ -498,7 +503,7 @@ const ChatWindow = ({ id }: { id?: string }) => {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
         <p className="dark:text-white/70 text-black/70 text-sm">
-          Failed to connect to the server. Please try again later.
+          Не удалось подключиться к серверу. Пожалуйста, повторите попытку позже.
         </p>
       </div>
     );
@@ -523,6 +528,8 @@ const ChatWindow = ({ id }: { id?: string }) => {
               sendMessage={sendMessage}
               messageAppeared={messageAppeared}
               rewrite={rewrite}
+              vlmEnabled={vlmEnabled}
+              setVlmEnabled={setVlmEnabled}
             />
           </>
         ) : (
@@ -532,6 +539,8 @@ const ChatWindow = ({ id }: { id?: string }) => {
             setFocusMode={setFocusMode}
             optimizationMode={optimizationMode}
             setOptimizationMode={setOptimizationMode}
+            vlmEnabled={vlmEnabled}
+            setVlmEnabled={setVlmEnabled}
           />
         )}
       </div>

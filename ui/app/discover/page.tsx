@@ -4,8 +4,9 @@ import { Search, ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import { fetchDataDiscover } from '@/components/utils';
 
-interface Discover {
+export interface Discover {
   title: string;
   content: string;
   url: string;
@@ -17,39 +18,17 @@ const Page = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/discover.json', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        let data = await res.json();
-
-        if (!data.blogs) {
-          data = {
-            blogs: Object.values(data),
-          }
-        }
-
-        if (!res.ok) {
-          throw new Error(data.message);
-        }
-
-        data.blogs = data.blogs.filter((blog: Discover) => blog.thumbnail);
-
-        setDiscover(data.blogs);
-      } catch (err: any) {
-        console.error('Error fetching data:', err.message);
-        toast.error('Error fetching data');
-      } finally {
+    fetchDataDiscover()
+      .then((blogs) => {
+        setDiscover(blogs);
+      })
+      .catch((err: any) => {
+        console.error('Ошибка при получении данных:', err.message);
+        toast.error('Ошибка при получении данных');
+      })
+      .finally(() => {
         setLoading(false);
-      }
-    };
-
-    fetchData();
+      });
   }, []);
 
   return loading ? (

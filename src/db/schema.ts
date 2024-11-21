@@ -19,4 +19,5 @@ export const chats = sqliteTable('chats', {
   category: text('category').notNull(),
   space: text('space').notNull(),
   filename: text('filename').notNull(),
+  pipelineType: text('pipelineType').notNull(),
 });

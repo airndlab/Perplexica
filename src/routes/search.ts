@@ -18,7 +18,7 @@ router.post('/', async(req, res) => {
     }
 
     const requestId = uuidv4()
-    const emitter = createSearchEmitter(requestId, body.query, body.history, '', '', '')
+    const emitter = createSearchEmitter(requestId, body.query, body.history, '', '', '', '')
 
     emitter.on('end', (data) => {
       const parsedData = JSON.parse(data)

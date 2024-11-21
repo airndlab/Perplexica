@@ -23,6 +23,7 @@ type WSMessage = {
   category: string;
   space: string;
   filename: string;
+  pipelineType: string;
   message: Message;
   optimizationMode: string;
   type: string;
@@ -118,6 +119,7 @@ export const handleMessage = async (
         parsedWSMessage.category,
         parsedWSMessage.space,
         parsedWSMessage.filename,
+        parsedWSMessage.pipelineType,
       );
 
       handleEmitterEvents(emitter, ws, aiMessageId, parsedMessage.chatId);
@@ -137,6 +139,7 @@ export const handleMessage = async (
             category: parsedWSMessage.category,
             space: parsedWSMessage.space,
             filename: parsedWSMessage.filename,
+            pipelineType: parsedWSMessage.pipelineType,
           })
           .execute();
       }

@@ -3,23 +3,17 @@ import {
   Dialog,
   DialogPanel,
   DialogTitle,
-  Popover,
-  PopoverButton,
-  PopoverPanel,
   Transition,
   TransitionChild,
   PopoverGroup,
 } from '@headlessui/react';
-import { File } from 'lucide-react';
 import { Document } from '@langchain/core/documents';
 import React, { Fragment, useState } from 'react';
-import Link from 'next/link';
-import _ from 'lodash';
+import Tooltip from '@/components/Tooltip';
+import FullTileContent from '@/components/FullTileContent';
 
 const MessageSources = ({ sources }: { sources: Document[] }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isHoverDialogOpen, setIsHoverDialogOpen] = useState(false);
-  const [currentItemIndex, setCurrentItemIndex] = useState(-1);
 
   const closeModal = () => {
     setIsDialogOpen(false);
@@ -31,28 +25,22 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
     document.body.classList.add('overflow-hidden-scrollable');
   };
 
-  const closeHoverModal = () => {
-    setIsHoverDialogOpen(false);
-    setCurrentItemIndex(-1);
-  };
-
-  const openHoverModal = (i: number) => () => {
-    setIsHoverDialogOpen(true);
-    setCurrentItemIndex(i);
-  };
-
   return (
     <PopoverGroup className="grid grid-cols-2 lg:grid-cols-4 gap-2">
       {sources.slice(0, 3).map((source, i) => (
-        <Popover
+        <Tooltip
           key={i}
-          onMouseEnter={openHoverModal(i)}
-          onMouseLeave={closeHoverModal}
+          title={
+            <a
+              className="max-w-[300px] min-w-[230px] space-y-2"
+              href={source.metadata.url}
+              target="_blank"
+            >
+              <FullTileContent source={source} />
+            </a>
+          }
         >
-          <PopoverButton
-            as="div"
-            className="bg-light-100 hover:bg-light-200 dark:bg-dark-100 dark:hover:bg-dark-200 transition duration-200 cursor-pointer rounded-lg p-3 font-medium"
-          >
+          <div className="bg-light-100 hover:bg-light-200 dark:bg-dark-100 dark:hover:bg-dark-200 transition duration-200 cursor-pointer rounded-lg p-3 font-medium">
             <div className="flex overflow-hidden whitespace-nowrap">
               <img
                 className="object-contain w-[48px] h-[27px]"
@@ -69,13 +57,8 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
               <div className="bg-black/50 dark:bg-white/50 h-[4px] w-[4px] rounded-full" />
               <span>{i + 1}</span>
             </div>
-          </PopoverButton>
-          <CustomSource
-            source={source}
-            isHoverDialogOpen={isHoverDialogOpen}
-            isCurrentItem={isHoverDialogOpen && currentItemIndex === i}
-          />
-        </Popover>
+          </div>
+        </Tooltip>
       ))}
       {sources.length > 3 && (
         <button
@@ -125,80 +108,5 @@ const MessageSources = ({ sources }: { sources: Document[] }) => {
     </PopoverGroup>
   );
 };
-
-const FullTileContent = ({ source, idx }: { source: Document, idx?: number }) => {
-  return (
-    <>
-      <div className="flex">
-        <img
-          className="object-contain w-[70px] h-[39px]"
-          width={70}
-          height={39}
-          src={source.metadata.thumbnail}
-          alt=""
-        />
-        <div className="ml-2 space-y-2">
-          <p className="dark:text-white text-xs">
-            {source.metadata.title.slice(0, 100)}{source.metadata.title.length > 100 ? '...' : ''}
-          </p>
-          <p className="text-xs text-black/50 dark:text-white/50 max-w-md">
-            {source?.pageContent?.slice(0, 100)}{source?.pageContent?.length > 100 ? '...' : ''}
-          </p>
-        </div>
-      </div>
-      <div className="flex justify-end space-x-4">
-        <div className="flex flex-row items-center space-x-1 text-black/50 dark:text-white/50 text-xs">
-          <Link
-            onClick={(e) => e.stopPropagation()}
-            href={`/?q=Сводка: ${source.metadata.file_name}`}
-            className="cursor-pointer flex space-x-1 hover:text-white transition duration-200"
-          >
-            <File width={17} height={17} />
-            <span className="hidden md:inline">Искать по файлу</span>
-          </Link>
-        </div>
-        {!_.isNil(idx) && (
-          <div className="flex flex-row items-center space-x-1 text-black/50 dark:text-white/50 text-xs">
-            <div className="bg-black/50 dark:bg-white/50 h-[4px] w-[4px] rounded-full" />
-            <span>{idx + 1}</span>
-          </div>
-        )}
-      </div>
-    </>
-  );
-}
-
-export const CustomSource = ({ isHoverDialogOpen, source, isCurrentItem = true }: {
-  isHoverDialogOpen: boolean;
-  source: Document;
-  isCurrentItem?: boolean;
-}) => {
-  return (
-    <Transition
-      as={Fragment}
-      enter="transition ease-out duration-150"
-      enterFrom="opacity-0 translate-y-1"
-      enterTo="opacity-100 translate-y-0"
-      leave="transition ease-in duration-150"
-      leaveFrom="opacity-100 translate-y-0"
-      leaveTo="opacity-0 translate-y-1"
-      show={isHoverDialogOpen && isCurrentItem}
-    >
-      <PopoverPanel
-        anchor="bottom"
-        static
-        className="z-50 rounded-2xl bg-light-secondary dark:bg-dark-secondary border border-light-200 dark:border-dark-200 px-6 py-3 text-left align-middle shadow-xl flex font-medium"
-      >
-        <a
-          className="max-w-[300px] min-w-[230px] space-y-2"
-          href={source.metadata.url}
-          target="_blank"
-        >
-          <FullTileContent source={source} />
-        </a>
-      </PopoverPanel>
-    </Transition>
-  )
-}
 
 export default MessageSources;
