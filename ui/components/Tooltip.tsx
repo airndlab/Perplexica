@@ -1,6 +1,5 @@
 import React, { forwardRef, Fragment, ReactNode, useMemo, useState } from 'react';
 import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
-import { cn } from '@/lib/utils';
 
 const MyCustomButton = forwardRef(({ className, children }: any, ref: any) => {
   return (
@@ -16,12 +15,10 @@ const Tooltip = ({
   children,
   title,
   placement = 'bottom',
-  inline,
 }: {
   children: ReactNode;
   title?: ReactNode;
   placement?: string;
-  inline?: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -48,10 +45,7 @@ const Tooltip = ({
       onMouseLeave={closeTooltip}
       className="w-full"
     >
-      <PopoverButton
-        as={MyCustomButton}
-        className={cn(inline ? '' : 'block w-full')}
-      >
+      <PopoverButton as={MyCustomButton}>
         {children}
       </PopoverButton>
       {title && (

@@ -135,7 +135,9 @@ const PopoverTags = ({ tag }: { tag: ITag }) => {
             <div
               className="flex flex-row items-center space-x-2 text-[#24A0ED]"
             >
-              {tag.icon}
+              <div>
+                {tag.icon}
+              </div>
               <p className="text-sm font-medium">{tag.title}</p>
             </div>
             <p className="text-black/70 dark:text-white/70 text-xs">

@@ -1,12 +1,4 @@
-import { ChevronDown, Sliders, Star, Zap, Cpu,
-  Car,
-  Heart,
-  Coffee,
-  Home,
-  Tag,
-  Truck,
-  Search,
-} from 'lucide-react';
+import { ChevronDown, Star, Zap, Cpu, Heart, Home, Search, Megaphone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Popover,
@@ -24,16 +16,34 @@ export const OptimizationModes = [
     icon: <Search size={20} className="text-[#9E9E9E]" />,
   },
   {
+    key: 'Реклама и связи с общественностью',
+    title: 'Реклама и связи с общественностью',
+    description: 'Инструменты и стратегии для успешной коммуникации и продвижения бренда.',
+    icon: <Megaphone size={20} className="text-[#8BC34A]" />,
+  },
+  {
+    key: 'Строительство и недвижимость',
+    title: 'Строительство и недвижимость',
+    description: 'Анализ и стратегии в области строительства и недвижимости.',
+    icon: <Home size={20} className="text-[#3F51B5]" />,
+  },
+  {
     key: 'Телекоммуникации',
     title: 'Телекоммуникации',
     description: 'Современные коммуникации и сетевые технологии.',
     icon: <Zap size={20} className="text-[#FF9800]" />,
   },
   {
-    key: 'Ритейл',
-    title: 'Ритейл',
-    description: 'Исследования и стратегии для повышения продаж и работы с потребителями в ритейле.',
-    icon: <Sliders size={20} className="text-[#4CAF50]" />,
+    key: 'Технологии и электроника',
+    title: 'Технологии и электроника',
+    description: 'Анализ инноваций и трендов в области технологий и электроники.',
+    icon: <Cpu size={20} className="text-[#FF5722]" />,
+  },
+  {
+    key: 'Фармацевтика и здравоохранение',
+    title: 'Фармацевтика и здравоохранение',
+    description: 'Исследования и стратегии для фармацевтических компаний и здравоохранения.',
+    icon: <Heart size={20} className="text-[#E91E63]" />,
   },
   {
     key: 'Финансовые услуги',
@@ -45,48 +55,6 @@ export const OptimizationModes = [
         className="text-[#2196F3] dark:text-[#BBDEFB] fill-[#BBDEFB] dark:fill-[#2196F3]"
       />
     ),
-  },
-  {
-    key: 'Технологии и электроника',
-    title: 'Технологии и электроника',
-    description: 'Анализ инноваций и трендов в области технологий и электроники.',
-    icon: <Cpu size={20} className="text-[#FF5722]" />,
-  },
-  {
-    key: 'Автомобильная промышленность',
-    title: 'Автомобильная промышленность',
-    description: 'Информация по маркетингу и развитию для автомобильных брендов и производителей.',
-    icon: <Car size={20} className="text-[#607D8B]" />,
-  },
-  {
-    key: 'Фармацевтика и здравоохранение',
-    title: 'Фармацевтика и здравоохранение',
-    description: 'Исследования и стратегии для фармацевтических компаний и здравоохранения.',
-    icon: <Heart size={20} className="text-[#E91E63]" />,
-  },
-  {
-    key: 'Продукты питания и напитки',
-    title: 'Продукты питания и напитки',
-    description: 'Тренды и подходы для брендов продуктов питания и напитков.',
-    icon: <Coffee size={20} className="text-[#795548]" />,
-  },
-  {
-    key: 'Строительство и недвижимость',
-    title: 'Строительство и недвижимость',
-    description: 'Анализ и стратегии в области строительства и недвижимости.',
-    icon: <Home size={20} className="text-[#3F51B5]" />,
-  },
-  {
-    key: 'Мода и одежда',
-    title: 'Мода и одежда',
-    description: 'Маркетинговые подходы и исследования для брендов моды и одежды.',
-    icon: <Tag size={20} className="text-[#9C27B0]" />,
-  },
-  {
-    key: 'Транспорт',
-    title: 'Транспорт',
-    description: 'Решения и аналитика для транспортной и логистической отраслей.',
-    icon: <Truck size={20} className="text-[#FFEB3B]" />,
   },
 ];
 
@@ -142,7 +110,9 @@ const Optimization = ({
                 )}
               >
                 <div className="flex flex-row items-center space-x-1 text-black dark:text-white">
-                  {mode.icon}
+                  <div>
+                    {mode.icon}
+                  </div>
                   <p className="text-sm font-medium">{mode.title}</p>
                 </div>
                 <p className="text-black/70 dark:text-white/70 text-xs">

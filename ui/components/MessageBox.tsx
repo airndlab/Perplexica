@@ -267,7 +267,6 @@ const TooltipLink = ({ href, children, className, sources }: {
 
   return (
     <Tooltip
-      inline
       title={
         <a
           className="max-w-[300px] min-w-[230px] space-y-2"

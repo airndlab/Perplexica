@@ -92,7 +92,9 @@ const Focus = ({
                       : 'text-black dark:text-white',
                   )}
                 >
-                  {mode.icon}
+                  <div>
+                    {mode.icon}
+                  </div>
                   <p className="text-sm font-medium">{mode.title}</p>
                 </div>
                 <p className="text-black/70 dark:text-white/70 text-xs">

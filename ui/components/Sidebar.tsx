@@ -73,11 +73,13 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
             })}
           </VerticalIconContainer>
 
-          <div className="space-y-7">
+          <div className="space-y-7 w-full">
             <div>
               <Tooltip title="Админ-панель" placement="right">
-                <a href="http://158.160.68.33:3003/public/dashboard/57e69abe-defb-4f43-acc7-55bfb97ee071#theme=night"
-                   target="_blank"
+                <a
+                  href="http://158.160.68.33:3003/public/dashboard/57e69abe-defb-4f43-acc7-55bfb97ee071#theme=night"
+                  target="_blank"
+                  className="flex justify-center"
                 >
                   <Settings
                     // onClick={() => setIsSettingsOpen(!isSettingsOpen)}
@@ -89,10 +91,12 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
 
             <div>
               <Tooltip title="Добавить файл" placement="right">
-                <CopyPlus
-                  onClick={() => setIsMockDialogOpen((prevState) => !prevState)}
-                  className="cursor-pointer"
-                />
+                <div className="flex justify-center">
+                  <CopyPlus
+                    onClick={() => setIsMockDialogOpen((prevState) => !prevState)}
+                    className="cursor-pointer"
+                  />
+                </div>
               </Tooltip>
             </div>
             {/*<UploadS3Document className="cursor-pointer mt-[30px]" />*/}
