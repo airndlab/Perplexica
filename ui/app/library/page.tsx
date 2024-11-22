@@ -2,15 +2,24 @@
 
 import DeleteChat from '@/components/DeleteChat';
 import { cn, formatTimeDifference } from '@/lib/utils';
-import { BookOpenText, ClockIcon, Delete, ScanEye } from 'lucide-react';
+import { BookOpenText, ClockIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { PopoverGroup } from '@headlessui/react';
+import _ from 'lodash';
+import { PopoverTags } from '@/components/Navbar';
+import { focusModes } from '@/components/MessageInputActions/Focus';
+import { OptimizationModes } from '@/components/MessageInputActions/Optimization';
+import Tooltip from '@/components/Tooltip';
 
 export interface Chat {
   id: string;
   title: string;
   createdAt: string;
   focusMode: string;
+  category: string;
+  space: string;
+  pipelineType: string;
 }
 
 const Page = () => {
@@ -74,37 +83,70 @@ const Page = () => {
       )}
       {chats.length > 0 && (
         <div className="flex flex-col pb-20 lg:pb-2">
-          {chats.map((chat, i) => (
-            <div
-              className={cn(
-                'flex flex-col space-y-4 py-6',
-                i !== chats.length - 1
-                  ? 'border-b border-white-200 dark:border-dark-200'
-                  : '',
-              )}
-              key={i}
-            >
-              <Link
-                href={`/c/${chat.id}`}
-                className="text-black dark:text-white lg:text-xl font-medium truncate transition duration-200 hover:text-[#24A0ED] dark:hover:text-[#24A0ED] cursor-pointer"
+          {chats.map((chat, i) => {
+            const currentSpace = _.find(focusModes, ['key', chat.space]);
+            const currentCategory = _.find(OptimizationModes, ['key', chat.category]);
+
+            const tags = (currentSpace || currentCategory)
+              ? [
+                // @ts-ignore
+                ...(currentSpace ? [currentSpace] : []),
+                // @ts-ignore
+                ...(currentCategory && !_.startsWith(chat.title, 'Сводка:') ? [currentCategory] : []),
+              ]
+              : []
+
+            return (
+              <div
+                className={cn(
+                  'flex flex-col space-y-4 py-6',
+                  i !== chats.length - 1
+                    ? 'border-b border-white-200 dark:border-dark-200'
+                    : '',
+                )}
+                key={i}
               >
-                {chat.title}
-              </Link>
-              <div className="flex flex-row items-center justify-between w-full">
-                <div className="flex flex-row items-center space-x-1 lg:space-x-1.5 text-black/70 dark:text-white/70">
-                  <ClockIcon size={15} />
-                  <p className="text-xs">
-                    {formatTimeDifference(new Date(), chat.createdAt)} назад
-                  </p>
+                <div className="flex items-center space-x-2">
+                  {!_.isEmpty(tags) && (
+                    <PopoverGroup className="flex space-x-2">
+                      {_.map(tags, (tag, idx) => (
+                        <PopoverTags key={idx} tag={tag} />
+                      ))}
+                    </PopoverGroup>
+                  )}
+                  {chat.pipelineType === 'vlm' && (
+                    <Tooltip
+                      title="Использована мультимодальная (VLM) модель"
+                      inline
+                    >
+                      <p className="text-xs cursor-pointer font-medium transition-colors duration-150 ease-in-out text-[#24A0ED]">
+                        Pro
+                      </p>
+                    </Tooltip>
+                  )}
+                  <Link
+                    href={`/c/${chat.id}`}
+                    className="text-black dark:text-white lg:text-xl font-medium truncate transition duration-200 hover:text-[#24A0ED] dark:hover:text-[#24A0ED] cursor-pointer"
+                  >
+                    {chat.title}
+                  </Link>
                 </div>
-                <DeleteChat
-                  chatId={chat.id}
-                  chats={chats}
-                  setChats={setChats}
-                />
+                <div className="flex flex-row items-center justify-between w-full">
+                  <div className="flex flex-row items-center space-x-1 lg:space-x-1.5 text-black/70 dark:text-white/70">
+                    <ClockIcon size={15} />
+                    <p className="text-xs">
+                      {formatTimeDifference(new Date(), chat.createdAt)} назад
+                    </p>
+                  </div>
+                  <DeleteChat
+                    chatId={chat.id}
+                    chats={chats}
+                    setChats={setChats}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

@@ -23,16 +23,18 @@ const Navbar = ({
   const [timeAgo, setTimeAgo] = useState<string>('');
 
   const tags = useMemo((): ITag[] => {
-    const currentFocusMode = _.find(focusModes, ['key', focusMode]);
-    const currentOptimizationMode = _.find(OptimizationModes, ['key', optimizationMode]);
-    if (currentFocusMode && currentOptimizationMode) {
+    const currentSpace = _.find(focusModes, ['key', focusMode]);
+    const currentCategory = _.find(OptimizationModes, ['key', optimizationMode]);
+    if (currentSpace || currentCategory) {
       return [
-        currentFocusMode,
-        currentOptimizationMode
+        // @ts-ignore
+        ...(currentSpace ? [currentSpace] : []),
+        // @ts-ignore
+        ...(currentCategory && !_.startsWith(title, 'Сводка:') ? [currentCategory] : []),
       ];
     }
     return [];
-  }, [focusMode, optimizationMode]);
+  }, [focusMode, optimizationMode, title]);
 
   useEffect(() => {
     if (messages.length > 0) {
@@ -77,7 +79,7 @@ const Navbar = ({
         <p className="text-xs">{timeAgo} назад</p>
       </div>
       <div className="flex items-center space-x-2">
-        {!_.isEmpty(tags) && !_.startsWith(title, 'Сводка:') && (
+        {!_.isEmpty(tags) && (
           <PopoverGroup className="flex space-x-2">
             {_.map(tags, (tag, idx) => (
               <PopoverTags key={idx} tag={tag} />
@@ -97,13 +99,13 @@ const Navbar = ({
   );
 };
 
-interface ITag {
+export interface ITag {
   title: string;
   description: string;
   icon: ReactNode;
 }
 
-const PopoverTags = ({ tag }: { tag: ITag }) => {
+export const PopoverTags = ({ tag }: { tag: ITag }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -130,7 +132,7 @@ const PopoverTags = ({ tag }: { tag: ITag }) => {
         <PopoverPanel
           anchor="bottom"
           static
-          className="z-40 !max-w-[300px] p-2 rounded-lg flex flex-col items-start justify-start text-start space-y-2 duration-200 transition bg-light-secondary dark:bg-dark-secondary"
+          className="z-50 !max-w-[300px] p-2 rounded-lg flex flex-col items-start justify-start text-start space-y-2 duration-200 transition bg-light-secondary dark:bg-dark-secondary"
         >
             <div
               className="flex flex-row items-center space-x-2 text-[#24A0ED]"
