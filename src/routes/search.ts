@@ -41,7 +41,7 @@ router.post('/', async(req, res) => {
 router.get('/poll', (req, res) => {
   const pendingRequest = Object.entries(allRequests)
     // @ts-ignore
-    .find(([_, requestData]) => requestData.type === 'llm' && requestData.status === 'pending')
+    .find(([_, requestData]) => requestData.pipelineType === 'llm' && requestData.status === 'pending')
 
   if (!pendingRequest) {
     return res.status(404).json({ message: 'No pending requests available' })
@@ -61,7 +61,7 @@ router.get('/poll', (req, res) => {
 router.get('/poll-vlm', (req, res) => {
   const pendingRequest = Object.entries(allRequests)
     // @ts-ignore
-    .find(([_, requestData]) => requestData.type === 'vlm' && requestData.status === 'pending')
+    .find(([_, requestData]) => requestData.pipelineType === 'vlm' && requestData.status === 'pending')
 
   if (!pendingRequest) {
     return res.status(404).json({ message: 'No pending requests available' })
