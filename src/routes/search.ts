@@ -41,7 +41,27 @@ router.post('/', async(req, res) => {
 router.get('/poll', (req, res) => {
   const pendingRequest = Object.entries(allRequests)
     // @ts-ignore
-    .find(([_, requestData]) => requestData.status === 'pending')
+    .find(([_, requestData]) => requestData.type === 'llm' && requestData.status === 'pending')
+
+  if (!pendingRequest) {
+    return res.status(404).json({ message: 'No pending requests available' })
+  }
+
+  const [requestId, requestData] = pendingRequest
+  // @ts-ignore
+  requestData.status = 'processing'
+
+  // @ts-ignore
+  res.status(200).json({ requestId, query: requestData.request.query, history: requestData.request.history,
+    // @ts-ignore
+    categories: requestData.request.categories, space: requestData.request.space, filename: requestData.request.filename
+  })
+})
+
+router.get('/poll-vlm', (req, res) => {
+  const pendingRequest = Object.entries(allRequests)
+    // @ts-ignore
+    .find(([_, requestData]) => requestData.type === 'vlm' && requestData.status === 'pending')
 
   if (!pendingRequest) {
     return res.status(404).json({ message: 'No pending requests available' })

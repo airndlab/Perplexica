@@ -7,13 +7,13 @@ export const createSearchEmitter = (requestId, query, history, category, space, 
   allRequests[requestId] = {
     emitter: emitter,
     status: 'pending',
+    pipelineType: pipelineType === 'vlm' ? 'vlm' : 'llm',
     request: {
       query: query,
       history: history || [],
       categories: [category || ''],
       space: space || '',
       filename: filename || '',
-      pipelineType: pipelineType || '',
     }
   }
   return emitter
