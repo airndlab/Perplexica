@@ -15,10 +15,10 @@ const FullTileContent = ({ source, idx }: { source: Document, idx?: number }) =>
           alt=""
         />
         <div className="ml-2 space-y-2">
-          <p className="dark:text-white text-xs">
+          <p className="dark:text-white text-xs [word-break:break-word]">
             {source?.metadata?.title?.slice(0, 100)}{source?.metadata?.title?.length > 100 ? '...' : ''}
           </p>
-          <p className="text-xs text-black/50 dark:text-white/50 max-w-md">
+          <p className="text-xs text-black/50 dark:text-white/50 max-w-md [word-break:break-word]">
             {source?.pageContent?.slice(0, 100)}{source?.pageContent?.length > 100 ? '...' : ''}
           </p>
         </div>
